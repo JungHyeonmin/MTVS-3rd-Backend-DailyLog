@@ -13,7 +13,7 @@ public class ContextConfiguration {
     public BoardDTO getBoard(){ // BoardDTO 객체를 생성하고 반환
         System.out.println("getBoard 호출함...");
 
-
+        // BoardDTO 객체를 하나 생성
         return new BoardDTO(1L, "스프링 수업이 앞으로 많이 어려워질까요?", "그래도 포기하지 않고 열심히 해볼거예요!", "미래의 멋진 개발자");
     }
 }

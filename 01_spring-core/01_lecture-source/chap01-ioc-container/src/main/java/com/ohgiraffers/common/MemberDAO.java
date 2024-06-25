@@ -1,6 +1,5 @@
 package com.ohgiraffers.common;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

@@ -6,6 +6,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Application {
     public static void main(String[] args) {
+
         // ApplicationContext : 빈 객체의 생성, 초기화, 보관, 제거 등을 관리하는 스프링 컨테이너
         // GenericXmlApplicationContext : XML 파일(경로)로부터 정보를 읽어와 객체를 생성하고 초기화
         ApplicationContext context = new GenericXmlApplicationContext("com/ohgiraffers/practice01/xmlconfig/spring-context.xml");
