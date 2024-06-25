@@ -59,9 +59,8 @@ public class LoggingAspect {
 
     // 비정상 종료
     @AfterThrowing(pointcut = "logPointcut()", throwing = "exception")
-    public void logAfterTrhowing(JoinPoint joinPoint, Exception exception) { // 예외 객체
+    public void logAfterThrowing(JoinPoint joinPoint, Exception exception) {
         System.out.println("AfterThrowing exception : " + exception);
-
     }
 
     // ProceedingJoinPoint : JoinPoint의 확장 버전

@@ -22,6 +22,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/01_lecture-source/chap02-retry" />
         <option name="gradleJvm" value="corretto-21" />
         <option name="modules">

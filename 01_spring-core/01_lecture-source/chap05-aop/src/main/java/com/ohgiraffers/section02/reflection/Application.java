@@ -1,9 +1,6 @@
 package com.ohgiraffers.section02.reflection;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -24,14 +21,15 @@ public class Application {
         System.out.println("class2 = " + class2);
 
 
-        // forName() : 오타가 나올 수 있기 때문에 try/catch문으로 작성해야 한다.
         try {
-            // 동적 로딩 (런타임 시 로딩)
-            // 장점 1. 런타임을 한 후에 로딩을 하기때문에 최초 실행속도가 빠르다.
-            // 장점 2.
-            Class class3 = Class.forName("com.ohgiraffers.section02.reflection.Account");
+            //동적 로딩 (런타임 시 로딩)
 
-            // 클래스 이름에 기호를 이용하여 추가
+            // forName() : 오타가 나올 수 있기 때문에 try/catch문으로 작성해야 한다.
+            // 동적 로딩 (런타임 시 로딩)
+            // 장점 : 런타임을 한 후에 로딩을 하기때문에 최초 실행속도가 빠르다.
+            Class class3 = Class.forName("com.ohgiraffers.section02.reflection.Account");
+            System.out.println("class3 = " + class3);
+
             Class class4 = Class.forName("[D");
             System.out.println("class4 = " + class4);
 
@@ -52,7 +50,9 @@ public class Application {
             throw new RuntimeException(e);
         }
 
-        /** 이런게 가능하구나~ 정도만 들어라*/
+        /** ⤵️이런게 가능하구나~ 정도만 들어라.. 작동이 되면 신기하다~⤵️
+         * 스스로 만들고 보여줄 수 있다면 스프림을 잘 이해하고 있는 것이다.
+         *  */
         // 필드 정보 반환
         Field[] fields = Account.class.getDeclaredFields();// 리턴타입이 필드라는 이름의 배열 클래스로 반환해준다.
         for (Field field : fields) {
@@ -85,7 +85,34 @@ public class Application {
         }
 
         // 메소드 정보에 접근
+        Method[] methods = Account.class.getMethods();
+        Method getBalanceMethod = null;
 
-        
+        for (Method method : methods) {
+            System.out.println(Modifier.toString(method.getModifiers()) + " "
+                    + method.getReturnType().getSimpleName() + " "
+                    + method.getName());
+
+            // method.getName().equals("getBalance"); : 위의 코드보다 이게 더 좋다.
+            // 위의 코드는 런타임 중에 NullTimeException 을 못막는다.
+            // 아래 코드는 방지할 수 있다.
+
+            if ("getBalance".equals(method.getName())) {
+                getBalanceMethod = method;
+            }
+        }
+
+        try {
+            System.out.println(getBalanceMethod.invoke((Account) constructors[2].newInstance()));
+
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }
