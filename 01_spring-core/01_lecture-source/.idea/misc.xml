@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/chap01-ioc-container" />
+    <file type="web" url="file://$PROJECT_DIR$/chap02-dependency-injection" />
+    <file type="web" url="file://$PROJECT_DIR$/chap02-retry" />
+    <file type="web" url="file://$PROJECT_DIR$/chap03-di-annotation" />
+    <file type="web" url="file://$PROJECT_DIR$/chap04-bean" />
+    <file type="web" url="file://$PROJECT_DIR$/chap05-aop" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="temurin-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -3,29 +3,32 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- PersonalAccount객체 생성 -->
     <bean id="account" class="com.ohgiraffers.common.PersonalAccount">
         <constructor-arg index="0" value="20"/>
-        <constructor-arg index="1" value="110-234-123456"/>
+        <constructor-arg index="1" value="110-234-567890"/>
     </bean>
 
-    <!-- 1. 생성자 주입 -->
-    <!--<bean id="member" class="com.ohgiraffers.common.Member">
+    <!-- member 객체 생성 PersonalAccount는 account객체에서 받아온다. // 생성자 주입
+            ref : ref: 참조형 데이터(bean으로 생성한 객체의 아이디)-->
+    <!--
+    <bean id="member" class="com.ohgiraffers.common.Member">
         <constructor-arg name="sequence" value="1"/>
-        <constructor-arg name="name" value="홍길동"/>
-        <constructor-arg name="phone" value="010-1234-5678"/>
-        <constructor-arg name="email" value="hong123@gmail.com"/>
+        <constructor-arg name="name" value="정현민"/>
+        <constructor-arg name="phone" value="010-7196-9483"/>
+        <constructor-arg name="email" value="2ee42a45@gmail.com"/>
+
         <constructor-arg name="personalAccount">
             <ref bean="account"/>
         </constructor-arg>
-    </bean>-->
+    </bean> -->
 
     <!-- 2. setter 주입 -->
-    <bean id="member" class="com.ohgiraffers.common.Member">
+    <bean id ="memeber" class="com.ohgiraffers.common.Member">
         <property name="sequence" value="1"/>
-        <property name="name" value="홍길동"/>
+        <property name="name" value="이순신"/>
         <property name="phone" value="010-1234-5678"/>
-        <property name="email" value="hong123@gmail.com"/>
+        <property name="email" value="lee1234@gmail.com"/>
         <property name="personalAccount" ref="account"/>
     </bean>
-
 </beans>
