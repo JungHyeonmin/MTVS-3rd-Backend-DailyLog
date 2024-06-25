@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--주석| MemberDTO member = new MemberDTO(1,"user01", "pass01", "홍길동"); MemberDTO클래스를 이용해서 member라는 이름의 객체를 만들어라 -->
+    <bean id="member" class="com.ohgiraffers.common.MemberDTO">
+
+        <constructor-arg index="0" value="1"/> <!-- 객체에 값을 대입할 때 index 0번 자리에 값을 1 넣어라-->
+        <constructor-arg name="id" value="user01"/> <!-- 객체에 값을 대입할 때 name이라는 이름의 자리에 값을 "user01"을 넣어라-->
+
+        <constructor-arg index="2">
+            <value>pass01</value>
+        </constructor-arg>
+
+        <constructor-arg name="name">
+            <value>홍길동</value>
+        </constructor-arg>
+
+    </bean>
+</beans>
