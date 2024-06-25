@@ -1,6 +1,7 @@
 package com.ohgiraffers.section01.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
@@ -49,12 +50,29 @@ public class LoggingAspect {
     @AfterReturning(pointcut = "logPointcut()", returning = "result") // 정상적인 동작에서 사용 // 속성을 여러개 쓸 수 있기때문에 속성을 적었다.
     public void logAfterReturning(JoinPoint joinPoint, Object result) { // 리턴해주는 값이 어떤 것인지 모르기 때문에 Object 타입으로 받는다. 이름도 같아야한다.
         System.out.println("\nAfterReturning result : " + result); //
-        
+
         if (result != null && result instanceof Map) {
             ((Map<Long, MemberDTO>) result).put(100L, new MemberDTO(100L, "반환값 가공"));
         }
     }
 
 
+    // 비정상 종료
+    @AfterThrowing(pointcut = "logPointcut()", throwing = "exception")
+    public void logAfterTrhowing(JoinPoint joinPoint, Exception exception) { // 예외 객체
+        System.out.println("AfterThrowing exception : " + exception);
+
+    }
+
+    // ProceedingJoinPoint : JoinPoint의 확장 버전
+    @Around("logPointcut()")
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("Around Before " + joinPoint.getSignature().getName());
+        /* 원본 조인포인트를 실행한다. */
+        Object result = joinPoint.proceed();
+        System.out.println("Around After " + joinPoint.getSignature().getName());
+        /* 원본 조인포인트를 호출한 쪽 혹은 다른 어드바이스가 다시 실행할 수 있도록 반환한다. */
+        return result;
+    }
 }
 
