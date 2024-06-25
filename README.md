@@ -1,4 +1,4 @@
-# <p align="center">MTVS-3rd-Backend-Dailywork</p>
+# <p align="center">MTVS-3rd-Backend-DailyLog</p>
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=shark&color=auto&height=200&section=header&text=MTVS-dailyLog&fontSize=90" />
   
