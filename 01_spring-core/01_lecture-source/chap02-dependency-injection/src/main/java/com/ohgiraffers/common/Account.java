@@ -1,6 +1,7 @@
 package com.ohgiraffers.common;
 
 // 리스코프 치환 원칙 : 계약에 의한 설계를 해야한다.
+// Account 인터페이스
 public interface Account {
     String getBalance();                // 잔액 조회
 

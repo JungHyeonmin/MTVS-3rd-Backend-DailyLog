@@ -3,10 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 구성 메타데이터(configuration metadata) : BeanFactory 가 IoC를 적용하기 위해 사용하는 설정 정보-->
     <bean id="account" class="com.ohgiraffers.common.PersonalAccount">
         <constructor-arg index="0" value="20"/>
         <constructor-arg index="1" value="110-234-123456"/>
     </bean>
+
 
     <!-- 1. 생성자 주입 -->
     <!--<bean id="member" class="com.ohgiraffers.common.Member">

@@ -1,5 +1,7 @@
 package com.ohgiraffers.common;
 
+
+// MemberDTO
 public class Member {
     private int sequence;
     private String name;
