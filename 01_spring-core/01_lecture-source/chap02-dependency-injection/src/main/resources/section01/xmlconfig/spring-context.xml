@@ -11,7 +11,9 @@
 
 
     <!-- 1. 생성자 주입 -->
+    <!-- -->
     <!--<bean id="member" class="com.ohgiraffers.common.Member">
+
         <constructor-arg name="sequence" value="1"/>
         <constructor-arg name="name" value="홍길동"/>
         <constructor-arg name="phone" value="010-1234-5678"/>

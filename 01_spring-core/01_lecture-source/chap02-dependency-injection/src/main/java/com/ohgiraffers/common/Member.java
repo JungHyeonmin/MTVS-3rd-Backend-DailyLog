@@ -2,16 +2,20 @@ package com.ohgiraffers.common;
 
 
 // MemberDTO
+
+// 사람 객체 DTO
 public class Member {
-    private int sequence;
+    private int sequence;   // 순서(개인 고유 번호)
     private String name;
     private String phone;
     private String email;
 
+    // 개인 계좌
     private Account personalAccount;
 
     public Member() {}
 
+    // 사람 객체 생성자
     public Member(int sequence, String name, String phone, String email, Account personalAccount) {
         this.sequence = sequence;
         this.name = name;
