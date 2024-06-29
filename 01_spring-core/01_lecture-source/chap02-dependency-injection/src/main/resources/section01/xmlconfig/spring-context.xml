@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Configuration Metadata 정보를 가지는 <beans> 태그-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 구성 메타데이터(configuration metadata) : BeanFactory 가 IoC를 적용하기 위해 사용하는 설정 정보-->
-    <bean id="account" class="com.ohgiraffers.common.PersonalAccount">
+
+    <!-- bean 의 id 와 bean 을 등록할 클래스를 작성-->
+    <!-- bean 태그의 클래스 속성은 인터페이스 타입이 아닌 구현 클래스 타입으로 작성해야 한다. 따라서 Account 인터페이스가 아닌 PersonalAccount 클래스를 사용한다.-->
+    <!-- Personal Account 빈 생성-->
+    <bean id="personalAccount" class="com.ohgiraffers.common.PersonalAccount">
+        <!-- bean 의 생성자에 저장할 키와 값을 작성-->
         <constructor-arg index="0" value="20"/>
         <constructor-arg index="1" value="110-234-123456"/>
     </bean>
 
+    <!--
+    member 빈은 account 빈을 참조하도록 되어있다. 이를 의존한다고 한다.
+    member bean 을 만들기 위해서는 Account 인터페이스를 의존해야 하고,
+    생성자를 통해 의존성 객체를 전달하여 의존성을 주입하고 있으므로 이를 생성자 주입이라 한다.
+    -->
 
     <!-- 1. 생성자 주입 -->
 
-    <!-- 빈 설정 id(이름) = member 클래스, class="인스턴스를 만들고자 하는 클래스의 위치"-->
-    <!-- constructor-arg : Bean을 생성할 때 생성자에 전달할 인자를 설정하는 태그-->
+    <!-- 빈 설정 id(이름) = member 클래스, class="인스턴스를 만들고자 하는 클래스(위치)"-->
+    <!-- constructor-arg : bean 을 생성할 때 생성자에 전달할 인자를 설정하는 태그-->
     <!-- ref bean="account : ref (참조) => account 라는 라는 객체(Bean)를 참조 -->
 
-    <!--<bean id="member" class="com.ohgiraffers.common.Member">
-
+    <!-- member 빈 생성-->
+    <!--member 라는 id 로 Member Class 의 객체를 생성한다. -->
+    <!--
+    <bean id="member" class="com.ohgiraffers.common.Member">
         <constructor-arg name="sequence" value="1"/>
         <constructor-arg name="name" value="홍길동"/>
         <constructor-arg name="phone" value="010-1234-5678"/>
         <constructor-arg name="email" value="hong123@gmail.com"/>
         <constructor-arg name="personalAccount">
-            <ref bean="account"/>
-        </constructor-arg>
-    </bean>-->
+    -->
+    <!--ref : 참조형 데이터, ref="참조할 bean 의 id" -->
+    <!--
+        <ref bean="personalAccount"/>
+            </constructor-arg>
+    </bean>
+    -->
+
+
+
 
     <!-- 2. setter 주입 -->
+    <!-- <property>태그 : setter 메서드를 통해 빈 객체의 값을 초기화 하는 설정-->
+    <!--name : 필드명, value : 필드에 담을 값, ref : 참조할 bean 의 id -->
+    <!-- member 는
     <bean id="member" class="com.ohgiraffers.common.Member">
         <property name="sequence" value="1"/>
         <property name="name" value="홍길동"/>
         <property name="phone" value="010-1234-5678"/>
         <property name="email" value="hong123@gmail.com"/>
-        <property name="personalAccount" ref="account"/>
+        <property name="personalAccount" ref="personalAccount"/>
     </bean>
 
 </beans>
