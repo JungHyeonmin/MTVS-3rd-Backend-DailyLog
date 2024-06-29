@@ -7,6 +7,8 @@ import java.util.Map;
 
 // @Bean : 메서드 레벨에서 선언하며, 반환하는 객체(인스턴스)를 개발자가 수동으로 bean 으로 등록시키는 어노테이션
 // @Component : 클래스 레벨에서 선언함으로써 스프링이 런타임시에 컴포넌트스캔을 하여 자동으로 bean 을 찾고 등록하는 어노테이션
+// 개발자가 컨트롤 불가능한 외부 라이브러리의 경우 -> @Beam
+// 개발자가 직접 컨트롤이 가능한 내부 클래스의 경우 -> @Component
 @Component("memberDAO")
 public class MemberDAO {
 
