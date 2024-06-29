@@ -4,6 +4,18 @@ import com.ohgiraffers.common.MemberDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+
+/**
+ * ### 정리
+ *
+ * - XML 설정은 전통적으로 사용하던 방식으로 최근에는 Java 설정이 선호된다.
+ * - 개발자가 직접 컨트롤 가능한 Class 의 경우 @Component 를 클래스에 사용하여 빈 스캐닝을 통한 자동 빈 등록을 한다.
+ * - 개발자가 직접 제어할 수 없는 외부 라이브러리는 @Bean 을 메소드에 사용하여 수동 빈 등록을 한다.
+ *     - 다형성을 활용하고 싶은 경우에도 @Bean 을 사용할 수 있다.
+ */
+
+
+
 public class Application {
     public static void main(String[] args) {
 

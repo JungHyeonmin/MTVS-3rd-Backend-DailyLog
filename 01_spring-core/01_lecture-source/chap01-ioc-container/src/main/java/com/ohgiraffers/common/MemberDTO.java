@@ -12,7 +12,7 @@ public class MemberDTO {
     }
 
     public MemberDTO(int sequence, String id, String pwd, String name) {
-        this.sequence = sequence;
+        this.sequence = sequence; // 고유한 숫자나 식별자
         this.id = id;
         this.pwd = pwd;
         this.name = name;
