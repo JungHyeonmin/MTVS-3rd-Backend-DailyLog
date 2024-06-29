@@ -24,9 +24,9 @@
 # 스프링의 특징
 - Spring은 POJO프로그래밍을 지향한다.
   - IoC와 DI, AOP, PSA라는 주요 기술을 통해 애플리케이션을 POJO로 개발할 수 있게 해준다.
-      -> IoC(Inversion of Control)와 DI(Dependency Injection)
-      -> AOP(Aspect Oriented Programming)
-      ->PSA(Portable Service Abstractions)
+      - IoC(Inversion of Control)와 DI(Dependency Injection)
+      - AOP(Aspect Oriented Programming)
+      - PSA(Portable Service Abstractions)
 
 # POJO란?
 - Java로 생성하는 순수한 객체를 뜻한다.
