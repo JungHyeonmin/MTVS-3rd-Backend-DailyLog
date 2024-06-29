@@ -20,6 +20,8 @@
     member 빈은 account 빈을 참조하도록 되어있다. 이를 의존한다고 한다.
     member bean 을 만들기 위해서는 Account 인터페이스를 의존해야 하고,
     생성자를 통해 의존성 객체를 전달하여 의존성을 주입하고 있으므로 이를 생성자 주입이라 한다.
+
+    => 생성자 주입 : 객체 생성 시점에 의존성을 주입
     -->
 
     <!-- 1. 생성자 주입 -->
@@ -45,8 +47,13 @@
     </bean>
     -->
 
+    <!--
+    MemberDTO 는 Account 타입을 의존하고 있기 때문에
+    member 빈 등록 시 account 빈을 참조하도록 <property> 태그의 ref 속성을 작성한다.
+    Setter 메소드를 통해 의존성 객체를 전달하여 의존성을 주입하고 있으므로 이를 세터 주입 이라 한다.
 
-
+    => setter 주입 : 객체 생성 후 setter 메서드를 이용해서 의존성 주입
+    -->
 
     <!-- 2. setter 주입 -->
     <!-- <property>태그 : setter 메서드를 통해 빈 객체의 값을 초기화 하는 설정-->
@@ -59,5 +66,5 @@
         <property name="email" value="hong123@gmail.com"/>
         <property name="personalAccount" ref="personalAccount"/>
     </bean>
-
+-->
 </beans>
