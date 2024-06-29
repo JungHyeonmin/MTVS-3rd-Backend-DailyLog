@@ -11,7 +11,11 @@
 
 
     <!-- 1. 생성자 주입 -->
-    <!-- -->
+
+    <!-- 빈 설정 id(이름) = member 클래스, class="인스턴스를 만들고자 하는 클래스의 위치"-->
+    <!-- constructor-arg : Bean을 생성할 때 생성자에 전달할 인자를 설정하는 태그-->
+    <!-- ref bean="account : ref (참조) => account 라는 라는 객체(Bean)를 참조 -->
+
     <!--<bean id="member" class="com.ohgiraffers.common.Member">
 
         <constructor-arg name="sequence" value="1"/>

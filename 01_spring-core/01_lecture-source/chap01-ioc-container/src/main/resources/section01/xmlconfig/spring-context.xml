@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <beans> 태그 : 태그 내부에 <bean>태그 를 사용해 하나의 bean(객체) 설정 정보를 정의한다.-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--주석| MemberDTO member = new MemberDTO(1,"user01", "pass01", "홍길동"); MemberDTO클래스를 이용해서 member라는 이름의 객체를 만들어라 -->
+    <!-- <bean> 태그 : Bean 설정 정보를 담고 있는 메타데이터를 정의하는 태그이다.-->
     <bean id="member" class="com.ohgiraffers.common.MemberDTO">
 
-        <constructor-arg index="0" value="1"/> <!-- 객체에 값을 대입할 때 index 0번 자리에 값을 1 넣어라-->
+        <!-- <constructor> 태그 : 생성자를 호출할 때 전달할 인자를 정의한다. 만약 <bean> 태그에 아무것도 작성하지 않았다면 기본 생성자를 사용한다는 것을 의미한다.-->
+        <constructor-arg index="0" value="1"/> <!-- 객체에 값을 대입할 때 index 0번 자리에 value 를 1 전달해라-->
         <constructor-arg name="id" value="user01"/> <!-- 객체에 값을 대입할 때 name이라는 이름의 자리에 값을 "user01"을 넣어라-->
 
         <constructor-arg index="2">
@@ -19,3 +23,18 @@
 
     </bean>
 </beans>
+
+        <!--
+        이 과정은 <beans>태그로 아래의 <bean>태그가 <beans>의 configuration metadata 를 사용하고
+        <bean> 태그 안에서 memberDTO 라는 클래스의 생성자를 member 라는 빈의 이름으로 스프링 컨테이너가 호출할 수 있으며
+        만약 호출할 시 <constructor args> 태그로 정의한 값들을 이용해서 MemberDTO 객체를 생성한다.
+
+        => 이렇게 만들어진 Bean 은 스프링 컨테이너에 의해 관리되어 필요한 곳에서 주입되거나 사용될 수 있다.
+        -->
+
+        <!--
+        bean 설정하는 순서
+        1. <beans> 태그를 이용해서 configuration metadata 를 설정한다.
+        2. <beans> 태그 안에 <bean>태그를 이용해서 호출가능하도록 bean 의 이름을 만들고 싶은 객체의 주소를 설정한다.
+        3. <constructor-arg>태그를 이용해서 만들고 싶은 객체의 값을 index, name 키워드를 이용해서 value 안에 값을 작성한 다음 전달한다.
+        -->
