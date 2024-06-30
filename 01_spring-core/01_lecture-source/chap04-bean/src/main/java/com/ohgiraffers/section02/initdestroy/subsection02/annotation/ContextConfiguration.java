@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+
+// annotation 으로 bean 을 등록할때는 ComponentScan 을 이용해서 bean 을 스캔해줘야 한다.
 // @Component, @Repository와 같은 어노테이션이 부여된 class들을 자동으로 Scan하여 Bean으로 등록해주는 역할
 @ComponentScan("com.ohgiraffers.section02.initdestroy.subsection02.annotation") // base Package를 기준으로 빈을 탐색
 public class ContextConfiguration {
@@ -31,7 +33,7 @@ public class ContextConfiguration {
     }
 
     @Bean
-    @Scope("prototype") // 인스턴스를 생성해서 인스턴스를 싱글톤으로 관리한다.
+    @Scope("prototype")
     public ShoppingCart cart() {
         return new ShoppingCart();
     }
