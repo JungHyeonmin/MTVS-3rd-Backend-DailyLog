@@ -2,6 +2,7 @@ package com.ohgiraffers.section01.autowired.common;
 
 import java.util.Date;
 
+// 책 객체 생성 클래스
 public class BookDTO {
     private int sequence;
     private int isbn;

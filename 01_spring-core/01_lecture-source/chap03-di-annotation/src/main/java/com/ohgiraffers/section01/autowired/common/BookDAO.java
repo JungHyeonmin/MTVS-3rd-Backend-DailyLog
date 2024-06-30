@@ -6,6 +6,7 @@ import java.util.List;
 // DAO : 실제로 DB의 데이터에 접근하는 객체
 
 public interface BookDAO {
+
     /* 도서 목록 전체 조회 */
     List<BookDTO> findAllBooks();
 

@@ -58,7 +58,6 @@
     <!-- 2. setter 주입 -->
     <!-- <property>태그 : setter 메서드를 통해 빈 객체의 값을 초기화 하는 설정-->
     <!--name : 필드명, value : 필드에 담을 값, ref : 참조할 bean 의 id -->
-    <!-- member 는
     <bean id="member" class="com.ohgiraffers.common.Member">
         <property name="sequence" value="1"/>
         <property name="name" value="홍길동"/>
@@ -66,5 +65,5 @@
         <property name="email" value="hong123@gmail.com"/>
         <property name="personalAccount" ref="personalAccount"/>
     </bean>
--->
+
 </beans>
