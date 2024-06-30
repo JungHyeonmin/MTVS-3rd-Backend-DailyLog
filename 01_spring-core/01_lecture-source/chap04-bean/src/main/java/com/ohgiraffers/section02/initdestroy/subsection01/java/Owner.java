@@ -1,5 +1,6 @@
 package com.ohgiraffers.section02.initdestroy.subsection01.java;
 
+// 사장님 클래스
 public class Owner {
     public void openShop() {
         System.out.println("사장님이 가게 문을 열었습니다. 이제 쇼핑을 하실 수 있습니다.");
