@@ -20,6 +20,9 @@ public class BookService {
     public void setBookDAO(BookDAO bookDAO) {
         this.bookDAO = bookDAO;
     }
+    // -> setter 주입
+    // setter 메소드에도 @Autowired 어노테이션을 작성할 수 있다.
+    // 그러면 스프링 컨테이너는 BookService 빈 객체 생성 시 BookDAO 타입의 빈 객체를 찾아 의존성을 주입해준다.
 
     public List<BookDTO> findAllBooks() {
 
