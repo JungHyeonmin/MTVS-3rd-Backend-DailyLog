@@ -52,5 +52,8 @@ public class Application {
 
         // 같은 인스턴스를 사용하기 때문에 cart1과 cart2가 공유되어서 모든 상품이 하나의 리스트에 담겨졌다.
         System.out.println("cart1에 담긴 내용" + cart1.getItem());
+
+        // -> 이런 상황을 방지하기 위해서 @Prototype 이 필요하다.
+        // @Prototype : 스코프를 갖는 Bean 은 매번 새로운 인스턴스를 생성한다. 이를 통해 의존성 주입 등의 작업에서 객체 생성에 대한 부담을 줄일 수 있다.
     }
 }

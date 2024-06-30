@@ -33,8 +33,12 @@ public class ContextConfiguration {
         return new Beverage("지리산암반수", 3000, 500);
     }
 
+    // @singleton : singleton 은 애플리케이션 내에서 하나의 인스턴스만을 생성하고, 모든 빈이 해당 인스턴스를 공유하여 사용한다. 이를 통해 메모리 사용량을 줄일 수 있으며, 성능 향상을 기대할 수 있다.
+    // @Prototype : 스코프를 갖는 Bean 은 매번 새로운 인스턴스를 생성한다. 이를 통해 의존성 주입 등의 작업에서 객체 생성에 대한 부담을 줄일 수 있다.
+
     @Bean
-    @Scope("singleton")        // @Scope() : 스프링에서 빈의 범위를 지정하는 어노테이션
+    // @Scope("singleton")        // @Scope() : 스프링에서 빈의 범위를 지정하는 어노테이션
+    @Scope("prototype") //
     public ShoppingCart cart() {
         // shoppingCart() 객체 : 상품을 담는 리스트
         return new ShoppingCart();
