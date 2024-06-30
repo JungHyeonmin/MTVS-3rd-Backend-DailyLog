@@ -20,12 +20,12 @@ public class Application {
         cart1.addItem(carpBread);
         cart1.addItem(milk);
 
-        System.out.println("cart1 = " + cart1.getItems());
+        System.out.println("cart1 = " + cart1.getItem());
 
         ShoppingCart cart2 = context.getBean(("cart"), ShoppingCart.class);
         cart2.addItem(water);
 
-        System.out.println("cart2 = " + cart2.getItems());
+        System.out.println("cart2 = " + cart2.getItem());
 
         // 컨테이너 종료시킬 수 있는 기능 - AnnotationConfigApplicationContext 애서 제공
         // 자원을 사용하면 close()를 사용해야 한다.

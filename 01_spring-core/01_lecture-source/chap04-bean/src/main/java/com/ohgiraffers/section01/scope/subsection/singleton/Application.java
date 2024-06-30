@@ -1,6 +1,7 @@
 package com.ohgiraffers.section01.scope.subsection.singleton;
 
 import com.ohgiraffers.common.Beverage;
+import com.ohgiraffers.common.Bread;
 import com.ohgiraffers.common.Product;
 import com.ohgiraffers.common.ShoppingCart;
 import org.springframework.context.ApplicationContext;
@@ -19,26 +20,37 @@ public class Application {
          * **/
 
 
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext(ContextConfiguration.class);
+        /* 빈 설정 파일을 기반으로 IoC 컨테이너 생성 */
+        ApplicationContext context = new AnnotationConfigApplicationContext(ContextConfiguration.class);
 
-        // getBean : 빈 인스턴스 조회
-        Product carpBread = context.getBean("carpBread", Product.class);
-        Product milk = context.getBean("milk", Product.class);
+        /* 각 상품타입에 스프링 컨테이너에 저장 붕어빵, 딸기우유, 지리산 암반수 등의 빈 객체를 반환 받는다. */
+        // bean id 를 안적어서 각 메서드명으로 호출한다.
+        Product carpBread = context.getBean("carpBread", Bread.class);
+        Product milk = context.getBean("milk", Beverage.class);
         Product water = context.getBean("water", Beverage.class);
 
-        ShoppingCart cart1 = context.getBean(("cart"), ShoppingCart.class);
+        /* 첫 번째 손님이 쇼핑 카트를 꺼낸다. */
+        ShoppingCart cart1 = context.getBean("cart", ShoppingCart.class);
+        // 쇼핑카트 리스트에 carpBread, milk 추가
         cart1.addItem(carpBread);
         cart1.addItem(milk);
 
-        System.out.println("cart1 = " + cart1.getItems());
+        /* 붕어빵과 딸기우유가 담겨있다. */
+        System.out.println("cart1에 담긴 내용 : " + cart1.getItem());
 
-        ShoppingCart cart2 = context.getBean(("cart"), ShoppingCart.class);
+        /* 두 번째 손님이 쇼핑 카트를 꺼낸다. */
+        ShoppingCart cart2 = context.getBean("cart", ShoppingCart.class);
+        // 쇼핑카트 리스트에 water 추가
         cart2.addItem(water);
 
-        System.out.println("cart2 = " + cart2.getItems());
+        /* 붕어빵과 딸기우유와 지리산암반수가 담겨있다. */
+        System.out.println("cart2에 담긴 내용 : " + cart2.getItem());
 
-        System.out.println("cart1의 hashCode : " + cart1.hashCode()) ;
-        System.out.println("cart2의 hashCode : " + cart2.hashCode()) ;
+        /* 두 카드의 hashcode 를 출력해보면 동일한 것을 볼 수 있다. */
+        System.out.println("cart1의 hashcode : " + cart1.hashCode());
+        System.out.println("cart2의 hashcode : " + cart2.hashCode());
+
+        // 같은 인스턴스를 사용하기 때문에 cart1과 cart2가 공유되어서 모든 상품이 하나의 리스트에 담겨졌다.
+        System.out.println("cart1에 담긴 내용" + cart1.getItem());
     }
 }
