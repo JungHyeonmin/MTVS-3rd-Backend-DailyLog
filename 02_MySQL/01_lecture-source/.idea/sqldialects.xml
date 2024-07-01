@@ -8,5 +8,6 @@
     <file url="file://$PROJECT_DIR$/08_subquery.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/09_priactice01.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/10_dml.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/11_build_in_functions.sql" dialect="MySQL" />
   </component>
 </project>

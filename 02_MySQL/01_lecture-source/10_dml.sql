@@ -67,28 +67,3 @@ from tbl_menu;
 delete from tbl_menu;
 
 desc tbl_menu;
-
--- `ASCII` : 아스키 코드 값 추출
--- `CHAR` : 아스키 코드로 문자 추출
-SELECT ASCII('A'), CHAR(65);
-
-
--- BIT_LENGTH : 할당된 비트 크기 반환
--- CHAR_LENGTH : 문자열의 길이 반환
--- LENGTH : 할당된 BYTE 크기 반환
-SELECT BIT_LENGTH('pie'), CHAR_LENGTH('pie'), LENGTH('pie');
-SELECT menu_name, BIT_LENGTH(menu_name), CHAR_LENGTH(menu_name), LENGTH(menu_name) from tbl_menu;
-
-
-
-SELECT CONCAT('호랑이', '기린', '토끼');
-SELECT CONCAT_WS(',', '호랑이', '기린', '토끼');
-SELECT CONCAT_WS('-', '2023', '05', '31');
-
-SELECT
-    ELT(2, '사과', '딸기', '바나나'), FIELD('딸기', '사과', '딸기', '바나나'),
-    FIND_IN_SET('바나나', '사과,딸기,바나나'), INSTR('사과딸기바나나', '딸기'), LOCATE('딸기', '사과딸기바나나');
-
-SELECT FORMAT(123142512521.5635326, 3);
-
-SELECT BIN(65), OCT(65), HEX(65);
