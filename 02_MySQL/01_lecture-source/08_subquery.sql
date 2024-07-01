@@ -42,3 +42,7 @@ FROM
     tbl_menu
 WHERE
     menu_price < 9000;
+
+
+select *
+from tbl_menu;

@@ -31,8 +31,6 @@ where tb_student.DEPARTMENT_NO = 001
   and tb_student.STUDENT_SSN like '%-2%'
   and ABSENCE_YN = 'Y';
 
-
-
 -- 3. 도서관에서 대출 도서 장기 연체자들을 찾아 이름을 게시하고자 한다.
 -- 그 대상자들의 학번이 다음과 같을 때 대상자들을 찾는 적 SQL 구문을 작성하시오
 -- A513079, A513090, A513091, A513110, A513119
