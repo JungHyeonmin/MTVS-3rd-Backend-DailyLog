@@ -168,7 +168,7 @@ SELECT DATE(NOW()), TIME(NOW());
 -- TIMEDIFF : 시간1 - 시간2의 결과를 구함
 SELECT DATEDIFF('2023-05-31', NOW()), TIMEDIFF('17:07:11', '13:06:10');
 
-
+--
 -- DAYOFWEEK : 요일 반환(1이 일요일)
 -- MONTHNAME : 해당 달의 이름 반환
 -- DAYOFYEAR : 해당 년도에서 몇 일이 흘렀는지 반환
