@@ -61,6 +61,11 @@ public class Template {
     }
     
     // Statement 객체 메모리 해제 메서드
+    // Statement : Database 에 SQL 문을 전달하고 실행결과를 받아내는 객체
+    // (Statement: 부모클래스 / PreparedStatement: 자식클래스)
+    // Connection 객체에 의해 프로그램에 리턴되는 객체와 그 메소드의 집합
+    // Connection 클래스의 createStatement() 메소드 호출의 결과로 리턴됨
+    // Statement 객체를 통해 SQL 문을 executeQuery/executeUpdate 메소드의 인자로 전달, SQL 질의 수행
     public static void close(Statement stmt) {
         try {
             if (stmt != null && !stmt.isClosed()) {
@@ -72,6 +77,7 @@ public class Template {
     }
 
     // ResultSet 객체 메모리 해제 메서드
+    // ResultSet : ResultSet 은 SELECT 문의 결과를 저장하는 객체입니다.
     public static void close(ResultSet rset) {
         try {
             if (rset != null && !rset.isClosed()) {
