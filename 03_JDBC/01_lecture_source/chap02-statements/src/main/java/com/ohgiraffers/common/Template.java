@@ -13,6 +13,7 @@ public class Template {
         Connection con = null;
         Properties props = new Properties();
 
+
         try {
             props.load(new FileReader("src/main/java/com/ohgiraffers/config/connection-info.properties"));
 
