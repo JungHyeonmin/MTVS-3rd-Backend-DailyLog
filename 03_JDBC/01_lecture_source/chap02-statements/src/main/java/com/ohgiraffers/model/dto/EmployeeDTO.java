@@ -2,6 +2,7 @@ package com.ohgiraffers.model.dto;
 
 import java.sql.Date;
 
+// DataBase 에서 받아온 정보를 저장하기 위해 만든 Employee 객체
 public class EmployeeDTO {
 
     private String empId;

@@ -47,6 +47,7 @@ public class Template {
             throw new RuntimeException(e);
         }
 
+        // 연결할 수 있는 Connection 객체를 반환
         return con;
     }
 
