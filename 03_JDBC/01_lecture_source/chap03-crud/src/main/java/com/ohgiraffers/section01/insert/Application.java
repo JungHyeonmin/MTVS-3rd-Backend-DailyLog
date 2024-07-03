@@ -24,14 +24,15 @@ public class Application {
         String orderableStatus = sc.nextLine();
 
 
-        MenuDTO menu = new MenuDTO();
-        menu.setMenuName(menuName);
-        menu.setMenuPrice(menuPrice);
-        menu.setCategoryCode(categoryCode);
-        menu.setOrderalbeStatus(orderableStatus);
+        MenuDTO newMenu = new MenuDTO();
 
-        MenuRegisterService menuRegistService = new MenuRegisterService();
-        if (menuRegistService.registerMenu(menu)) {
+        newMenu.setMenuName(menuName);
+        newMenu.setMenuPrice(menuPrice);
+        newMenu.setCategoryCode(categoryCode);
+        newMenu.setOrderalbeStatus(orderableStatus);
+
+        MenuRegisterService menuRegisterService = new MenuRegisterService();
+        if (menuRegisterService.registerMenu(newMenu)) {
             System.out.print("메뉴 등록에 성공하셨습니다!!");
         } else {
             System.out.print("메뉴 등록에 실패하셨습니다..");

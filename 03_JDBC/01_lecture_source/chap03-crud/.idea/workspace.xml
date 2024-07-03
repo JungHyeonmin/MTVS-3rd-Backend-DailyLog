@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuRegisterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section02/delete/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section02/delete/MenuDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section02/delete/MenuDeleteService.java" afterDir="false" />
+    <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuReplaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fe38ff42-3cf3-4baf-96cc-f92f7cb5d476.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fe38ff42-3cf3-4baf-96cc-f92f7cb5d476.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/config/connection-info.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/config/connection-info.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/common/Template.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/common/Template.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuRegistService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +66,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/lecture/teami5/crud-practice/crud-practice",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,7 +80,12 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Application.com.ohgiraffers.section02.delete.Application">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\lecture\subject\MTVS-3rd-Backend-DailyLog\03_JDBC\01_lecture_source\chap03-crud\src\main\java\com\ohgiraffers\section03\update" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.com.ohgiraffers.section03.update.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ohgiraffers.section01.insert.Application" />
       <module name="chap03-crud.main" />
@@ -107,8 +112,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.ohgiraffers.section03.update.Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ohgiraffers.section03.update.Application" />
+      <module name="chap03-crud.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ohgiraffers.section03.update.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.com.ohgiraffers.section03.update.Application" />
         <item itemvalue="Application.com.ohgiraffers.section02.delete.Application" />
         <item itemvalue="Application.Application" />
       </list>
@@ -130,11 +149,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719980261578</updated>
-      <workItem from="1719980262615" duration="6246000" />
+      <workItem from="1719980262615" duration="12277000" />
     </task>
+    <task id="LOCAL-00001" summary="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현">
+      <option name="closed" value="true" />
+      <created>1719986962988</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719986962988</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="7/2 (화) jdbc&#10;&#10;jdbc - preparedStatement 수업" />
+    <MESSAGE value="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현" />
   </component>
 </project>

@@ -8,6 +8,7 @@ import java.util.Properties;
 public class Template {
 
     public static Connection getConnection() {
+
         Connection con = null;
         Properties prop = new Properties();
 
@@ -37,6 +38,7 @@ public class Template {
         return con;
     }
 
+
     public static void commit (Connection con) {
         try {
             con.commit();
@@ -45,6 +47,7 @@ public class Template {
         }
     }
 
+
     public static void rollback(Connection con) {
         try {
             con.rollback();
@@ -52,18 +55,6 @@ public class Template {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static void close(Connection con) {
@@ -78,6 +69,7 @@ public class Template {
         }
     }
 
+
     public static void close(Statement stmt) {
         try {
 
@@ -89,6 +81,7 @@ public class Template {
             throw new RuntimeException(e);
         }
     }
+
 
     public static void close(ResultSet rset) {
         try {

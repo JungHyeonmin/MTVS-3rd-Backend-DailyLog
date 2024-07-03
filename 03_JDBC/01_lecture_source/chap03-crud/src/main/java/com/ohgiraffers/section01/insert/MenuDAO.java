@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 import static com.ohgiraffers.common.Template.close;
 
+// DAO 클래스는 DataBase 를 건드리는 작업을 하는 클래스
+
 public class MenuDAO {
     // 마이바티스 스타일
     public int insertMenu(Connection con, MenuDTO menu) {
