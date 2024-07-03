@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../chap02-statements/src/main/java/com/ohgiraffers/sqlinjection/Application1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../chap02-statements/src/main/java/com/ohgiraffers/sqlinjection/Application2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/common/Template.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/config/connection-info.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/model/dto/MenuDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuRegistService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuRegisterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section02/delete/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section02/delete/MenuDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section02/delete/MenuDeleteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/config/connection-info.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/config/connection-info.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuRegistService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.chap03-crud [:Application.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -71,8 +73,47 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
+  <component name="RunManager" selected="Application.com.ohgiraffers.section02.delete.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ohgiraffers.section01.insert.Application" />
+      <module name="chap03-crud.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ohgiraffers.section01.insert.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.ohgiraffers.section02.delete.Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ohgiraffers.section02.delete.Application" />
+      <module name="chap03-crud.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ohgiraffers.section02.delete.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.com.ohgiraffers.section02.delete.Application" />
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -89,7 +130,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719980261578</updated>
-      <workItem from="1719980262615" duration="3337000" />
+      <workItem from="1719980262615" duration="6246000" />
     </task>
     <servers />
   </component>

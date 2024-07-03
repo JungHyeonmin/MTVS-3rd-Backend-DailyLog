@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
 
-        // DAO : jdbc 에 해당하는 코드만 넣는다.
 
+        // 매개변수가 3개 이상으로 늘어나면 알아보기 힘들기 때문에 menuDTO 로 묶어서 전달한다.
         Scanner sc = new Scanner(System.in);
         System.out.print("메뉴의 이름을 입력하세요 : ");
         String menuName = sc.nextLine();
@@ -30,8 +30,8 @@ public class Application {
         menu.setCategoryCode(categoryCode);
         menu.setOrderalbeStatus(orderableStatus);
 
-        MenuRegistService menuRegistService = new MenuRegistService();
-        if (menuRegistService.registMenu(menu)) {
+        MenuRegisterService menuRegistService = new MenuRegisterService();
+        if (menuRegistService.registerMenu(menu)) {
             System.out.print("메뉴 등록에 성공하셨습니다!!");
         } else {
             System.out.print("메뉴 등록에 실패하셨습니다..");

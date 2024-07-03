@@ -11,6 +11,7 @@ import static com.ohgiraffers.common.Template.close;
 public class MenuDAO {
     // 마이바티스 스타일
     public int insertMenu(Connection con, MenuDTO menu) {
+
         PreparedStatement pstmt = null;
         int result = 0;
 
@@ -20,11 +21,14 @@ public class MenuDAO {
 
         try {
             pstmt = con.prepareStatement(query);
+
             pstmt.setString(1, menu.getMenuName());
             pstmt.setDouble(2, menu.getMenuPrice());
             pstmt.setInt(3, menu.getCategoryCode());
             pstmt.setString(4, menu.getOrderalbeStatus());
 
+            // executeUpdate()는 INSERT, UPDATE, DELETE 와 같은 DML(Data Manipulation Language)에서
+            // 실행 결과로 영향을 받은 레코드 수를 반환한다.
             result = pstmt.executeUpdate();
 
         } catch (SQLException e) {
