@@ -35,7 +35,7 @@ public class Application2 {
             rset = pstmt.executeQuery();
 
             // 가져온 행에서 다음 커서가 있으면 
-            if(rset.next()) { // rset 에 저장된 값 중에서 EMP_NAME 컬럼을 문자열로 출력
+            if(rset.next()) { // rset에 저장된 값 중에서 EMP_NAME 컬럼을 문자열로 출력
                 System.out.println(rset.getString("EMP_NAME") + "님 환영합니다.");
             } else {
                 System.out.println("회원 정보가 없습니다.");
