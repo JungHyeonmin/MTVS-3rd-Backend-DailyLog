@@ -1,7 +1,6 @@
 package com.ohgiraffers.model.dto;
 
 import java.sql.Date;
-
 // DataBase 에서 받아온 정보를 저장하기 위해 만든 Employee 객체
 public class EmployeeDTO {
 
@@ -20,8 +19,7 @@ public class EmployeeDTO {
     private java.sql.Date entDate;
     private String entYn;
 
-    public EmployeeDTO() {
-    }
+    public EmployeeDTO() {}
 
     public EmployeeDTO(String empId, String empName, String empNo, String email, String phone, String deptCode, String jobCode, String salLevel, int salary, double bonus, String managerId, Date hireDate, Date entDate, String entYn) {
         this.empId = empId;

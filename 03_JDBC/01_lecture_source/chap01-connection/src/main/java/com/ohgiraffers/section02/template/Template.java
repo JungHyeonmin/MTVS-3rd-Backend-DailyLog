@@ -26,15 +26,21 @@ public class Template {
             // props = {password=ohgiraffers, driver=com.mysql.cj.jdbc.Driver, user=ohgiraffers, url=jdbc:mysql://localhost/employee}
             System.out.println("props = " + props);
 
+
+
             // getProperty("key") : key 값을 제공하면 해당하는 Value 를 문자열로 반환함
             String driver = props.getProperty("driver");
             String url = props.getProperty("url");
+
+
 
             // 클래스 동적 로딩(런타임 중에 동작), 사용할 드라이버 등록
             // Class.forName() : Class 클래스는 클래스의 메타 정보를 가지고 있다.
             // forName() : 메서드에 풀 클래스명을 작성하면 해당 클래스를 메모리에 올려 사용할 준비를 하도록 하는 것으로, 동적 로딩을 이용하여 DB driver 를 로딩한다.
             // -> 주의사항 1. 반드시 예외처리를 해야한다. 2. 직접 instance 가 불가능하고 DriverManager 클래스의 getConnection()메서드를 이용하여 인스턴스를 생성한다.
             Class.forName(driver);
+
+
 
             // url 과 properties 파일만으로 객체 생성
             con = DriverManager.getConnection(url, props);
