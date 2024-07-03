@@ -1,5 +1,7 @@
 package com.ohgiraffers.model.dto;
 
+// rset 에 저장한 객체를 DTO 를 이용해서 저장한다.
+
 public class MenuDTO {
     private int menuCode;
     private String menuName;
