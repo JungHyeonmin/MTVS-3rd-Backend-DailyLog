@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuReplaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fe38ff42-3cf3-4baf-96cc-f92f7cb5d476.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fe38ff42-3cf3-4baf-96cc-f92f7cb5d476.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/common/Template.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/common/Template.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section01/insert/MenuDAO.java" afterDir="false" />
-    </list>
+    <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: replace 구현 연습" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,7 +138,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719980261578</updated>
-      <workItem from="1719980262615" duration="12277000" />
+      <workItem from="1719980262615" duration="12298000" />
     </task>
     <task id="LOCAL-00001" summary="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현">
       <option name="closed" value="true" />
@@ -159,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719986962988</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: replace 구현 연습">
+      <option name="closed" value="true" />
+      <created>1719993144425</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719993144425</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +165,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="7/2 (화) jdbc&#10;&#10;jdbc - preparedStatement 수업" />
     <MESSAGE value="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현" />
+    <MESSAGE value="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: replace 구현 연습" />
+    <option name="LAST_COMMIT_MESSAGE" value="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: replace 구현 연습" />
   </component>
 </project>
