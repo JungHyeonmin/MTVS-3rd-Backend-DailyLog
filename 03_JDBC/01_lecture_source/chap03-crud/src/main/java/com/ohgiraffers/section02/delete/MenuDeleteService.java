@@ -4,6 +4,7 @@ package com.ohgiraffers.section02.delete;
 // 기능을 만든다 == Service 하나를 만든다.
 // 삭제 하는 서비스
 
+// insert 와 같다.
 import com.ohgiraffers.model.dto.MenuDTO;
 
 import java.sql.Connection;

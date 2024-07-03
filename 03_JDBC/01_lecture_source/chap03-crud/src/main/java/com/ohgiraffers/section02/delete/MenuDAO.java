@@ -16,7 +16,7 @@ public class MenuDAO {
         PreparedStatement pstmt = null;
         int result =0;
 
-
+        // DELETE 쿼리 : TBL_MENU 에서 <?>의 값과 같은 MENU_NAME 을 지운다.
         String query = "DELETE FROM TBL_MENU WHERE MENU_NAME = ?";
 
         try {
