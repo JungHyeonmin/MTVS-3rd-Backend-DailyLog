@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: delete">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section04/select/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section04/select/MenuDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section04/select/MenuSelectService.java" afterDir="false" />
+    <list default="true" id="f073e649-39bf-4f6a-9dda-ef47867c196b" name="Changes" comment="7/4 (목) jdbc 복습&#10;&#10;crud 구현&#10;: select">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/00bc55f2-0893-45ed-abb2-c31bdbaaaa2b.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/00bc55f2-0893-45ed-abb2-c31bdbaaaa2b/storage_v2/_src_/schema/menudb.HUbDvw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fe38ff42-3cf3-4baf-96cc-f92f7cb5d476.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fe38ff42-3cf3-4baf-96cc-f92f7cb5d476/storage_v2/_src_/schema/menudb.HUbDvw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuReplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section03/update/MenuReplaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section04/select/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ohgiraffers/section04/select/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +57,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.com.ohgiraffers.section03.update.Application.executor": "Run",
     "Application.com.ohgiraffers.section04.select.Application.executor": "Run",
     "Gradle.chap03-crud [:Application.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -88,7 +85,7 @@
       <recent name="C:\lecture\subject\MTVS-3rd-Backend-DailyLog\03_JDBC\01_lecture_source\chap03-crud\src\main\java\com\ohgiraffers\section03\update" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.ohgiraffers.section04.select.Application">
+  <component name="RunManager" selected="Application.com.ohgiraffers.section03.update.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ohgiraffers.section01.insert.Application" />
       <module name="chap03-crud.main" />
@@ -143,8 +140,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.ohgiraffers.section04.select.Application" />
         <item itemvalue="Application.com.ohgiraffers.section03.update.Application" />
+        <item itemvalue="Application.com.ohgiraffers.section04.select.Application" />
         <item itemvalue="Application.com.ohgiraffers.section02.delete.Application" />
         <item itemvalue="Application.Application" />
       </list>
@@ -170,6 +167,8 @@
       <workItem from="1720008236050" duration="3999000" />
       <workItem from="1720016414366" duration="2226000" />
       <workItem from="1720052511759" duration="4972000" />
+      <workItem from="1720067037906" duration="36000" />
+      <workItem from="1720090698055" duration="3277000" />
     </task>
     <task id="LOCAL-00001" summary="7/3 (수) jdbc&#10;&#10;crud 구현 수업 &#10;: select, insert, delete 구현">
       <option name="closed" value="true" />
@@ -211,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720017482028</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="7/4 (목) jdbc 복습&#10;&#10;crud 구현&#10;: select">
+      <option name="closed" value="true" />
+      <created>1720067062275</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720067062275</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +230,7 @@
     <MESSAGE value="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: replace 구현 연습" />
     <MESSAGE value="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: inset" />
     <MESSAGE value="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="7/3 (수) jdbc 복습&#10;&#10;crud 구현&#10;: delete" />
+    <MESSAGE value="7/4 (목) jdbc 복습&#10;&#10;crud 구현&#10;: select" />
+    <option name="LAST_COMMIT_MESSAGE" value="7/4 (목) jdbc 복습&#10;&#10;crud 구현&#10;: select" />
   </component>
 </project>
