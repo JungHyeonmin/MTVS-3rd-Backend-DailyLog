@@ -42,7 +42,7 @@ public class Application2 {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); 
         } finally {
             // 외부자원 닫기
             close(rset);
