@@ -59,7 +59,7 @@ menudb|schema||ohgiraffers||SELECT|G
 menudb|schema||ohgiraffers||SHOW VIEW|G
 menudb|schema||ohgiraffers||TRIGGER|G
 menudb|schema||ohgiraffers||UPDATE|G</Grants>
-      <ServerVersion>8.0.37</ServerVersion>
+      <ServerVersion>8.0.38</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
@@ -971,7 +971,7 @@ menudb|schema||ohgiraffers||UPDATE|G</Grants>
     </schema>
     <schema id="291" parent="1" name="menudb">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-07-03.14:32:29</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-07-06.07:33:29</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="performance_schema">
