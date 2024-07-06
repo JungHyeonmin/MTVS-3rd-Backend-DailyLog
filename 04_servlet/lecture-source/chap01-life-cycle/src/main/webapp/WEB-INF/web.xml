@@ -4,14 +4,31 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
+    <!--Servlet 에 대한 Container 설정을 하는 xml 파일-->
+    <!--Deployment Descriptor(DD) - 배포서술자
+        Application 에 대한 전체 설정 정보를 가지고 있는 파일로, xml 형식 파일이며 요소(= 태그)로 이루어져 있다.
+        - 파일 내 설정 정보를 가지고 웹 컨테이너가 Servlet 을 구동한다.
+    - 설정 정보
+        - Servlet 정의 및 Servlet 초기화 파라미터
+        - Session 설정 파라미터
+        - Servlet-jsp mapping 및 MIME type mapping
+        - 보안 설정
+        - Welcome file list 설정
+        - Error page list, resources, 환경변수-->
+
+    <!--서블릿 실행에 관한 정보를 설정-->
     <servlet>
-        <servlet-name>xmlmapping</servlet-name> <!-- 별칭 -->
+        <!-- servlet 별칭 설정 -->
+        <servlet-name>xmlmapping</servlet-name>
+        <!--컨테이너에 Servlet 설정-->
         <servlet-class>com.ohgiraffers.section01.xml.lifeCycleTestServlet</servlet-class> <!-- 진짜 클래스(경로) -->
     </servlet>
 
+    <!--client 가 servlet 에 접근할 때 원본 클래스명이 아닌 다른 명칭으로 접근할 수 있다.-->
     <servlet-mapping>
         <servlet-name>xmlmapping</servlet-name>
+        <!--클라이언트가 요청한 특정 URL 에 대해서 필터링 할 때 사용-->
         <url-pattern>/xml-lifecycle</url-pattern>
     </servlet-mapping>
-
+<!--web.xml 파일의 루트태그-->
 </web-app>
