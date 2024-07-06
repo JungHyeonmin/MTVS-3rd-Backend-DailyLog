@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--web.xml : 은 서버가 시작할 때 웹서버가 사용하는 환경설정 파일 -->
+<!--web.xml 장점
+        매핑 정보를 관리하면 하눈에 확인하고 관리할 수 있다.-->
+<!--web.xml 단점
+        새로운 서블릿을 추가할 때마다 파일을 이동해 매핑하고 일일히 확인해야하는 단점이 있다.-->
+
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
+    <!--<servlet> : 서블릿을 정의한다.-->
+    <!--<servlet-mapping> : 클라이언트가 해당 서블릿에 접근할 수 있는 URL 경로를 설정하는 역할을 한다.-->
+
+
+    <!--<servlet> : 서버에서 서블릿 실행에 관한 정보를 설정
+        반드시 하위 태그로 <servlet-name>과 <servlet-class>가 나와야 한다.-->
     <servlet>
+        <!--<servlet-name> : 서블릿을 참조할 수 있게 이름을 지정한다.-->
         <servlet-name>xmlmapping</servlet-name> <!-- 별칭 -->
+        <!-- <servlet-class> : 참조할 서블릿의 클래스 이름을 지정(경로)-->
         <servlet-class>com.ohgiraffers.section01.xml.lifeCycleTestServlet</servlet-class> <!-- 진짜 클래스(경로) -->
     </servlet>
 
+    <!--<servlet-mapping> : client 가 servlet 에 접근할 때 원본 클래스명이 아닌 지정한 이름으로 접근할 수 있도록 설정한다.
+                            별칭을 설정하는 방법은 web.xml 을 이용하는 방법과 @annotation 을 사용하는 방법이 있다.-->
+    <!--클라이언트가 "/xml-lifecycle"URL 로 접근할 때 'xmlmapping' 서블릿을 호출하도록 매핑하는 설정-->
     <servlet-mapping>
+        <!--<servlet-name> : 매핑할 서블릿의 별칭 -->
         <servlet-name>xmlmapping</servlet-name>
+        <!--<url-pattern> : 클라이언트 접근 URL 설정, 포트번호/cha-->
         <url-pattern>/xml-lifecycle</url-pattern>
     </servlet-mapping>
 
 </web-app>
+<!--클라이언트가 http://localhost:8080/contextPath/xml-lifecycle URL로 요청을 보내면,
+                xmlmapping 서블릿(즉, com.ohgiraffers.section01.xml.lifeCycleTestServlet 클래스)이 이 요청을 처리하게 됩다.-->
+<!--<web-app> : 루트 속성, 문법 식별자 및 버전 정보를 속성 값으로 설정-->
