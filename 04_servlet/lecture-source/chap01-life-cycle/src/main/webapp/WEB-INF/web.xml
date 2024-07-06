@@ -11,7 +11,7 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
-    <!--<servlet> : 서블릿을 정의한다.-->
+    <!--<servlet> : 서블릿을 정의한다-->
     <!--<servlet-mapping> : 클라이언트가 해당 서블릿에 접근할 수 있는 URL 경로를 설정하는 역할을 한다.-->
 
 
