@@ -28,8 +28,10 @@ select distinct tb_student.STUDENT_name
 from tb_department,
      tb_student
 where tb_student.DEPARTMENT_NO = 001
-  and tb_student.STUDENT_SSN like '%-2%'
-  and ABSENCE_YN = 'Y';
+  and ABSENCE_YN = 'Y'
+  and (tb_student.STUDENT_SSN like '%-2%'
+  or tb_student.STUDENT_SSN like '%-4%');
+
 
 -- 3. 도서관에서 대출 도서 장기 연체자들을 찾아 이름을 게시하고자 한다.
 -- 그 대상자들의 학번이 다음과 같을 때 대상자들을 찾는 적 SQL 구문을 작성하시오
@@ -87,7 +89,7 @@ order by CATEGORY;
 -- 8. '19'학번 전주 거주자들의 모임을 만들려고 한다.
 -- 휴학한 사람들은 제외하고, 재학중인 학생들의 학번, 이름, 주민번호를 출력하는 구문을 작성하시오.
 
-select   tb_student.STUDENT_NO,
+select tb_student.STUDENT_NO,
        tb_student.STUDENT_NAME,
        tb_student.STUDENT_SSN,
        tb_student.ENTRANCE_DATE,
