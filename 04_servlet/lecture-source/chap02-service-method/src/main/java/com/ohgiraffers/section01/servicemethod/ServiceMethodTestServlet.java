@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-
+// @WebServlet : 어노테이션으로 Servlet Mapping 하는 방법, 클라이언트가 "request-service"로 URL 접속을 하면 이 서블릿 클래스로 매핑해준다.
 @WebServlet("/request-service")
 public class ServiceMethodTestServlet extends HttpServlet {
 
