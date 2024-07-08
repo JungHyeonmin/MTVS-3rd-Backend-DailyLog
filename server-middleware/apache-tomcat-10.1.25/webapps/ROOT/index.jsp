@@ -4,12 +4,13 @@
 <head>
     <title>JSP - Hello World</title>
 </head>
+
 <body>
-    <!--301,302라는 URL 을 강제로 바꾸라는 신호를 강제로 변환하는 것에 의의가 있다.-->
-    <h1>redirect</h1>
-    <ul>
-        <!-- default 는 doGet() method-->
-        <li><a href = "othersite">다른 웹 사이트로 redirect 테스트</a></li>
-    </ul>
+    <h1>Cookie Handling</h1>
+    <form action="cookie" method="post">
+        <label>firstName : </label> <input type="text" name="firstName"><br>
+        <label>lastName : </label> <input type="text" name="lastName"><br>
+        <input type="submit" value="전송">
+    </form>
 </body>
 </html>
