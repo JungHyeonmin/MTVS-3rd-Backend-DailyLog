@@ -7,7 +7,7 @@
   </a>
   
   <a href="s">
-    <img src="https://github-readme-stats.vercel.app/api?username=JungHyeonmin&theme=tokyonight&show_icons=true" width="45%" />
+    <img src="https://github-readme-stats.vercel.app/api?username=JungHyeonmin&theme=tokyonight&show_icons=true" width="40%" />
   </a>
 </p>
 
