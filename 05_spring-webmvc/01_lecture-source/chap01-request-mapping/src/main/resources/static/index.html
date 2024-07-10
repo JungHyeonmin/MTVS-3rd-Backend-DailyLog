@@ -1,0 +1,28 @@
+<!-- 시작 페이지-->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    // resource.static : 정적 (모두가 같은 화면) <br>
+    // resource.templates : 동적 (사용자마다 다른 화면-서버에서 받아온 데이터를 이용해서 만드는 페이지)
+    <h1>Spring MVC Mapping 테스트</h1>
+    <h2>1. 메서드에 요청 매핑하기</h2>
+    <h3>GET : /menu/regist (GET 방식으로 요청하는 방법 배우기)</h3>
+    <!--onclick : 짧은 JS 문을 입력할 수 있다.-->
+    <button onclick="location.href='/menu/regist'">GET 메뉴 등록 요청</button> <!-- localhost:8080/menu/regist 는 url 을 Get방식으로 요청(GET 이 default)-->
+
+    <h3>GET : /menu/modify</h3>
+<!--    <button onclick="location.href='/menu/modify'">GET 메뉴 수정 요청</button>-->
+    <form action="menu/modify" method="post"> <!-- localhost:8080/menu/modify 라는 url 을 post 방식으로 요청-->
+        <input type="submit">
+    </form>
+
+</body>
+</html>
