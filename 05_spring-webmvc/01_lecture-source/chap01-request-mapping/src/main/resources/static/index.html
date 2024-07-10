@@ -12,11 +12,15 @@
 <body>
     // resource.static : 정적 (모두가 같은 화면) <br>
     // resource.templates : 동적 (사용자마다 다른 화면-서버에서 받아온 데이터를 이용해서 만드는 페이지)
+
     <h1>Spring MVC Mapping 테스트</h1>
+
     <h2>1. 메서드에 요청 매핑하기</h2>
+
     <h3>GET : /menu/regist (GET 방식으로 요청하는 방법 배우기)</h3>
     <!--onclick : 짧은 JS 문을 입력할 수 있다.-->
     <button onclick="location.href='/menu/regist'">GET 메뉴 등록 요청</button> <!-- localhost:8080/menu/regist 는 url 을 Get방식으로 요청(GET 이 default)-->
+
 
     <h3>GET : /menu/modify</h3>
 <!--    <button onclick="location.href='/menu/modify'">GET 메뉴 수정 요청</button>-->
@@ -24,5 +28,35 @@
         <input type="submit">
     </form>
 
+
+    <h3>GET : /menu/delete</h3>
+    <button onclick="location.href='/menu/delete'">GET 메뉴 삭제 요청</button>
+
+
+    <h3>POST : /menu/delete</h3>
+    <form action="/menu/delete" method="post">
+        <input type="submit">
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+
+    <h2>2. 클래스에 요청 매핑하기</h2>
+    <h3>GET : /order/regist</h3>
+    <button onclick="location.href='/order/regist'">GET 주문 등록 요청</button>
+
+
+    <h3>GET : /order/modify</h3>
+    <button onclick="location.href='/order/modify'">GET 방식 주문 수정 요청</button>
+
+
+    <h3>GET : /order/delete</h3>
+    <button onclick="location.href='/order/modify'">GET 방식 주문 삭제 요청</button>
+
+
+    <h3>GET : /detail/{orderNo}</h3>
+    <button onclick="location.href='/order/detail/3'">GET </button>
 </body>
 </html>

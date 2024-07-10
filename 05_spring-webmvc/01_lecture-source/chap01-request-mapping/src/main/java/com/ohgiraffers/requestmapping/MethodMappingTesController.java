@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 
 // servlet 에 의존하지 않게 해준다. - PSA-서비스추상화 (다른 모델이 의존해서 사용하지 않게 보이게 해주는 것)
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,6 +34,7 @@ public class MethodMappingTesController {
     }
 
     // 요청 메서드 전용 어노테이션
+
     /**
      * 요청 메서드        어노테이션
      * POST             @PostMapping
@@ -41,4 +44,17 @@ public class MethodMappingTesController {
      * PATCH            @PatchMapping
      */
 
+    @GetMapping("/menu/delete")
+    public String deleteMenu(Model model) {
+        model.addAttribute("message", "GET 방식의 삭제용 핸들러 메서드 호출함...");
+
+        return "mappingResult";
+    }
+
+    @PostMapping("/menu/delete")
+    public String postDeleteMenu(Model model) {
+
+        model.addAttribute("message", "POST 방식의 삭제용 핸들러 메서드 호출함"); // 속성
+        return "mappingResult"; // js 파일명 (template 의 동적 페이지를 작성한다.)
+    }
 }
