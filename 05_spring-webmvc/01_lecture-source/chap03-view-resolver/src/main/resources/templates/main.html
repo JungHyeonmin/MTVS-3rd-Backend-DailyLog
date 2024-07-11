@@ -5,6 +5,39 @@
     <title>main</title>
 </head>
 <body>
-    <h1>뷰 리졸버를 이용한 뷰 연결하기</h1>
+<h1>뷰 리졸버를 이용한 뷰 연결하기</h1>
+
+<h3>문자열로 뷰 이름 반환하기</h3>
+<button onclick="location.href='string'">문자열로 뷰 이름 반환</button> <!-- button 을 누르면 "/string" 으로 이동-->
+
+<h3>문자열로 redirect 하기</h3> <!-- button 을 누르면 "/string-redirect" 으로 이동-->
+<button onclick="location.geref='string-redirect'">문자열로 뷰 이름 반환하여 리다이렉트</button>
+
+<h3>문자열로 뷰 이름 반환하면서 flashAttribute 추가하기</h3>
+<button onclick="location.href='string-redirect-attr'">문자열로 뷰 이름 반환하여 리다이렉트 * flashAttr 사용하기</button>
+<script>
+    const flashMessage1 = '[[${flashMessage1}]]';
+    if (flashMessage1) {
+        alert(flashMessage1);
+    }
+</script>
+
+<h3>ModelAndView 로 이름 지정해서 반환하기</h3>
+<button onclick="location.href='modelandview'">ModelAndView 로 뷰 이름 지정해서 반환받기</button>
+
+
+<h3>ModelAndView 로 이름 반환하여 리다이렉트</h3>
+<button onclick="location.href='modelandview-redirect'">ModelAndView 로 뷰 이름 반환하여 리다이렉트</button>
+
+
+<h3>ModelAndView 로 뷰 이름 반환하여 리다이렉트 & flashAttr 사용하기</h3>
+<button onclick="location.href='modelandview-redirect-attr'">ModelAndView 로 뷰 이름 반환하여 리다이렉트 & flashAttr 사용하기</button>
+<script>
+    const flashMessage2 = '[[${flashMessage2}]]';
+    if (flashMessage2) {
+        alert(flashMessage2);
+    }
+</script>
+
 </body>
 </html>
