@@ -2,10 +2,10 @@ package com.ohgiraffers.handlermethod;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+
+import java.util.Map;
 
 
 @Controller
@@ -41,4 +41,63 @@ public class FirstController {
 
         return "first/messagePrinter";
     }
+
+    @GetMapping("modify")
+    public void modify() {
+    }
+
+    @PostMapping("modify")
+    public String modifyMenuPrice(Model model
+            , @RequestParam(required = false) String modifyName
+            , @RequestParam(defaultValue = "0") int modifyPrice) {
+
+        // @RequestParam 은 속성명(name)이 완벽하게 같아야 작동한다. 값이 다르거나 없는 경우에 요청하는 파라미터가 잘못됐다는 400번 에러가 발생한다.
+        // 값이 다를 시 (required = false) 설정을 해야한다. 그러면 없다면 null(초기화값)로 표현한다.
+        // 값이 없거나 다른 타입일 경우 (defaultValue = "0") 설정을 해야한다. 그렇다면 defaultValue 에 지정한 값이 나온다.
+        // -> 값을 무조건 채워서 오는 것을 원한다면 <input>태그 에서 required 를 추가하면된다.
+
+        // @RequestParam 은 생략이 가능하다. 하지만 부가적인 속성 추가, 가독성을 위해서 어노테이션을 적는 것을 권장한다.
+
+        System.out.println("modifyName = " + modifyName);
+        System.out.println("modifyPrice = " + modifyPrice);
+
+        String message = modifyName + "메뉴의 가격을 " + modifyPrice + "원으로 가격을 변경하였습니다.";
+        model.addAttribute("message", message);
+
+        return "first/messagePrinter";
+    }
+
+    @PostMapping("modifyAll")
+    public String modifyAll(Model model, @RequestParam Map<String, String> parameters) {
+
+        String modifyName = parameters.get("modifyName2");
+        int modifyPrice = Integer.parseInt(parameters.get("modifyPrice2"));
+
+        String message = "메뉴의 이름을 " + modifyName + "(으)로, 가격을 " + modifyPrice + "원으로 변경하였습니다.";
+
+        model.addAttribute("message", message);
+
+        return "first/messagePrinter";
+    }
+
+
+    // @ModelAttribute 가 제일 편하기 때문에 가장 많이 사용하고, Session 에서도 사용한다.
+    @GetMapping("search")
+    public void search() {
+    }
+
+    @PostMapping("search")
+    public String searchmenu(@ModelAttribute("menu") MenuDTO menu) { // name : MenuDTO -> 별칭("menu"), value : menu
+        // @ModelAttribute 를 생략하고 사용할 수 있다. 하지만 속성명 변경 불가능 + 가독성을 위해서 작성하는 것을 권장한다.(권장한다 == 그냥 해ㅋ)
+
+        System.out.println(menu);
+
+        return "first/searchResult";
+    }
+
+
+    @GetMapping("login") // 핸들러 메서드 작성
+    public void login(){}
+
+
 }
