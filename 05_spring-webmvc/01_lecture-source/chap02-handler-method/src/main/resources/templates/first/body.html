@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>body</title>
+</head>
+<body>
+<h1>@RequestBody 를 이용한 커맨드객체로 파라미터 값 전달 받기</h1>
+<form action="body" method="post">
+    메뉴 이름 : <input type="text" name="menuName"><br>
+    메뉴 가격 : <input type="text" name="menuPrice"><br>
+    카테고리 :
+    <select name="categoryCode">
+        <option value="1">식사</option>
+        <option value="2">음료</option>
+        <option value="3">디저트</option>
+    </select><br>
+
+    판매상태 : <input type="text" name="orderAbleStatus"><br>
+    <input type="submit" value="검색하기">
+</form>
+</body>
+</html>
