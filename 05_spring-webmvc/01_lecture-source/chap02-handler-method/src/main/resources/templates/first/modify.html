@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modify</title>
+</head>
+<body>
+<h1>@RequestParma 을 이용하여 전달된 파라미터 꺼내기</h1>
+
+<h3>메뉴 수정하기</h3>
+<form action="modify" method="post">
+    <!--RequestParam 은 속성명(name)이 완벽하게 같아야 작동한다. 다를 시 (required = false) 설정을 해야한다. 그러면 없다면 null(초기화값)로 표현한다.-->
+    수정할 메뉴의 이름 : <input type="text" name="modifyName"> <br>
+    수정할 메뉴의 가격 : <input type="number" name="modifyPrice" required> <br>
+    <!-- <input> 태그의 required 속성은 폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시합니다.-->
+    <button type="submit">수정하기</button>
+
+
+
+    <h3>메뉴 수정하기2</h3>
+    <form action="modifyAll" method="post">
+        <!--@RequestParam 은 속성명(name)이 완벽하게 같아야 작동한다. 다를 시 (required = false) 설정을 해야한다. 그러면 없다면 null(초기화값)로 표현한다.-->
+        수정할 메뉴의 이름 : <input type="text" name="modifyName2"> <br>
+        수정할 메뉴의 가격 : <input type="number" name="modifyPrice2" required> <br>
+        <!-- <input> 태그의 required 속성은 폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시합니다.-->
+        <button type="submit">수정하기2</button>
+    </form>
+</body>
+</html>

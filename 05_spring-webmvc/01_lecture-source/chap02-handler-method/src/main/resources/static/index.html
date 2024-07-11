@@ -10,5 +10,18 @@
 <h3>1. WebRequest 로 요청 파라미터 전달 받기</h3>
 <button onclick="location.href='/first/regist'">파라미터 전달 받기</button>
 
+
+<h3>1. @RequestParam 으로 요청 파라미터 전달 받기</h3>
+<button onclick="location.href='/first/modify'">파라미터 전달 받기</button>
+
+
+<h3>3. @ModelAttribute 를 이용하여 파라미터 전달 받기</h3>
+<button onclick="location.href='/first/search'">@ModelAttribute 이용하기</button>
+
+<!--getSession 을 호출하여 객체를 받고 httpRequest 를 선언해서 사용한다.(원래 servlet 방식 : 숨길 수 없다.-->
+<!-- 우리는 httpSession 을 사용한다. 만료시킬때 두가지 방법이 있다.-->
+<h3>4-1, 4-2. session 이용하기</h3>
+<button onclick="location.href='/first/login'">session 에 정보 담기</button>
+
 </body>
 </html>
