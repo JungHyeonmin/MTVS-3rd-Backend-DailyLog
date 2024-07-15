@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper"> <!--mapper 들을 구분하기 위한 구문-->
+    <select id="selectSysdate" resultType="java.util.Date">
+        SELECT CURDATE()
+        FROM DUAL
+        <!-- DUAL : from 을 생략하지 못하는 테이블에서 가상의 from 테이블을 만들어준다.-->
+    </select>
+</mapper>
+        <!-- 마이바티스 공식 홈페이지 - 시작하기 - '매핑된 SQL 구문 살펴보기'에서 복사 후 붙여넣기-->

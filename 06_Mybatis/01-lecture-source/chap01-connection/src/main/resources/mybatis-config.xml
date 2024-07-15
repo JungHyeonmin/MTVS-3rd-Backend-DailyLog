@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>   <!-- xml 문은 내용이 없으면 태그를 바로 닫을 수 있다.-->
+            <dataSource type="POOLED">          <!--db 접속 환경설정-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/menudb"/>
+                <property name="username" value="ohgiraffers"/>
+                <property name="password" value="ohgiraffers"/>
+
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper.xml"/> <!--<configuration>에 mapper 등록-->
+    </mappers>
+</configuration>
+
+        <!--마이바티스 공식 홈페이지에서 XML 에서 SqlSessionFactory 빌드하기 복사 후 붙여넣기-->
