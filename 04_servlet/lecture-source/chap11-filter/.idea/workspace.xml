@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4897a863-8269-44c7-bbe9-320ebbade724" name="Changes" comment="7/10 (수) Servlet 수업&#10;&#10;filter 수정" />
+    <list default="true" id="4897a863-8269-44c7-bbe9-320ebbade724" name="Changes" comment="7/10 (수) Servlet 수업&#10;&#10;filter 수정">
+      <change beforePath="$PROJECT_DIR$/../../../05_spring-webmvc/01_lecture-source/chap01-request-mapping/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../05_spring-webmvc/01_lecture-source/chap01-request-mapping/src/main/resources/static/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,17 +58,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build chap11-filter.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 10.1.25.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build chap11-filter.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tomcat 10.1.25" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.25" ALTERNATIVE_JRE_ENABLED="false">
       <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
@@ -175,6 +177,7 @@
       <updated>1720582866187</updated>
       <workItem from="1720582867155" duration="51000" />
       <workItem from="1720582936444" duration="161000" />
+      <workItem from="1720708074494" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="7/10 (수) Servlet 수업&#10;&#10;filter 수정">
       <option name="closed" value="true" />
