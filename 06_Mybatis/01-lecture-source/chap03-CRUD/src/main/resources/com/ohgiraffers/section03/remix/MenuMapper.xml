@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.section03.remix.MenuMapper">
+
+    <resultMap id="menuResultMap" type="com.ohgiraffers.section03.remix.MenuDTO">
+        <id property="menuCode" column="MENU_CODE"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuPrice" column="MENU_PRICE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+    <select id="findAllMenus" resultMap="menuResultMap">
+        SELECT
+        MENU_CODE
+        , MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        FROM TBL_MENU
+        WHERE ORDERABLE_STATUS = 'Y'
+        ORDER BY MENU_CODE
+    </select>
+
+    <!-- parameterType : menuCode 의 타입 (생략 가능하지만 권장(가독성이 좋아서))-->
+    <select id="findMenuByMenuCode" resultMap="menuResultMap" parameterType="_int">
+        SELECT
+        MENU_CODE
+        , MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        FROM TBL_MENU
+        WHERE ORDERABLE_STATUS = 'Y'
+        AND MENU_CODE = #{ menuCode } <!--# 필수!-->
+    </select>
+
+    <!-- 클래스의 타입은 경로를 작성하면 된다.-->
+    <insert id="registMenu" parameterType="com.ohgiraffers.section03.remix.MenuDTO">
+        INSERT
+        INTO TBL_MENU
+        (
+        MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        )
+        VALUES
+        (
+        #{ menuName }<!-- DTO 의 필드 명과 동일해야 setter 가 가능하다. -->
+        , #{ menuPrice }
+        , #{ categoryCode }
+        , 'Y'
+        )
+    </insert>
+
+    <update id="modifyMenu" parameterType="com.ohgiraffers.section01.xmlconfig.MenuDTO">
+        UPDATE
+        TBL_MENU
+        SET
+        MENU_NAME=#{menuName}
+        , MENU_PRICE=#{menuPrice}
+        , CATEGORY_CODE=#{categoryCode}
+        , ORDERABLE_STATUS='Y'
+        WHERE
+        MENU_CODE=#{menuCode};
+    </update>
+
+    <delete id="removeMenu" parameterType="_int">
+        DELETE
+        FROM tbl_menu
+        WHERE MENU_CODE = #{menuCode}
+    </delete>
+</mapper>
