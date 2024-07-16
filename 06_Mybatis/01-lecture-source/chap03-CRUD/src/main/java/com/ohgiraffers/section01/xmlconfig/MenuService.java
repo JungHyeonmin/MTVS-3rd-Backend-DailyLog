@@ -43,7 +43,43 @@ public class MenuService {
         int result = menuDAO.registMenu(sqlSession, menu);
 
         // 트랜잭션 제어가 중요하다.
-        if(result > 0) {
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0;
+    }
+
+    public boolean modifyMenu(MenuDTO menu) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        int result = menuDAO.modifyMenu(sqlSession, menu);
+
+        // 트랜잭션
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0;
+    }
+
+    public boolean removeMenu(int menuCode) {
+
+        // == Connection
+        SqlSession sqlSession = getSqlSession();
+
+        int result = menuDAO.removeMenu(sqlSession, menuCode);
+
+        if (result > 0) {
             sqlSession.commit();
         } else {
             sqlSession.rollback();

@@ -55,4 +55,22 @@
         , 'Y'
         )
     </insert>
+
+    <update id="modifyMenu" parameterType="com.ohgiraffers.section01.xmlconfig.MenuDTO">
+        UPDATE
+        TBL_MENU
+        SET
+        MENU_NAME=#{menuName}
+        , MENU_PRICE=#{menuPrice}
+        , CATEGORY_CODE=#{categoryCode}
+        , ORDERABLE_STATUS='Y'
+        WHERE
+        MENU_CODE=#{menuCode};
+    </update>
+
+    <delete id="removeMenu" parameterType="_int">
+        DELETE
+        FROM tbl_menu
+        WHERE MENU_CODE = #{menuCode}
+    </delete>
 </mapper>

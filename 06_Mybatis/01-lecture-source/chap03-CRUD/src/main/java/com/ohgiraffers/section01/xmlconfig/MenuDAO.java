@@ -24,4 +24,14 @@ public class MenuDAO {
         // 세 가지의 정보를 가지고 있는 MenuDTO 객체로 전달
         return sqlSession.insert("MenuMapper.registMenu", menu);
     }
+
+    public int modifyMenu(SqlSession sqlSession, MenuDTO menu) {
+
+        return sqlSession.update("MenuMapper.modifyMenu", menu);
+    }
+
+    public int removeMenu(SqlSession sqlSession, int menuCode) {
+
+        return sqlSession.delete("MenuMapper.removeMenu", menuCode);
+    }
 }
