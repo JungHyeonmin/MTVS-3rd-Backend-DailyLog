@@ -1,5 +1,7 @@
 package com.ohgiraffers.section01.xmlconfig;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Application {
@@ -18,18 +20,46 @@ public class Application {
             System.out.print("메뉴 관리 번호를 입력하세요 : ");
             int no = sc.nextInt();
 
-            switch (no) {
-                case 1:
-                    menuController.findAllMenus();
-                    break;
-                case 2:
-                case 3:
+            switch(no) {
+                case 1: menuController.findAllMenus(); break;
+                case 2: menuController.findMenuByMenuCode(inputMenuCode()); break;
+                case 3: menuController.registMenu(inputMenu()); break;
                 case 4:
                 case 5:
                 default:
                     System.out.println("잘못된 메뉴를 선택하셨습니다.");
                     break;
             }
-        } while (true);
+        } while(true);
+    }
+
+    private static Map<String, String> inputMenuCode() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("메뉴 코드를 입력하세요 : ");
+        String menuCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<String, String>();
+        parameter.put("menuCode", menuCode);
+
+        return parameter;
+    }
+
+    private static Map<String, String> inputMenu() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("메뉴의 이름을 입력하세요 : ");
+        String menuName = sc.nextLine();
+        System.out.print("메뉴의 가격을 입력하세요 : ");
+        String menuPrice = sc.nextLine();
+        System.out.print("카테고리 코드를 입력하세요 : ");
+        String categoryCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("menuName", menuName);
+        parameter.put("menuPrice", menuPrice);
+        parameter.put("categoryCode", categoryCode);
+
+        return parameter;
     }
 }

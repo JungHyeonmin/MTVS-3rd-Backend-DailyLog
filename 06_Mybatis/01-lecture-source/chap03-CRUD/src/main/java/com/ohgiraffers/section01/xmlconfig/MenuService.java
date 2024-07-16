@@ -6,9 +6,8 @@ import java.util.List;
 
 import static com.ohgiraffers.section01.xmlconfig.Template.getSqlSession;
 
-public class MenuService { 
-    
-    // 메모리 낭비 방지를 위해서 필드에  선언
+public class MenuService {
+
     private final MenuDAO menuDAO;
 
     public MenuService() {
@@ -24,5 +23,34 @@ public class MenuService {
         sqlSession.close();
 
         return menuList;
+    }
+
+    public MenuDTO findMenuByMenuCode(int menuCode) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        MenuDTO menu = menuDAO.findMenuByMenuCode(sqlSession, menuCode);
+
+        sqlSession.close();
+
+        return menu;
+    }
+
+    public boolean registMenu(MenuDTO menu) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        int result = menuDAO.registMenu(sqlSession, menu);
+
+        // 트랜잭션 제어가 중요하다.
+        if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0;
     }
 }

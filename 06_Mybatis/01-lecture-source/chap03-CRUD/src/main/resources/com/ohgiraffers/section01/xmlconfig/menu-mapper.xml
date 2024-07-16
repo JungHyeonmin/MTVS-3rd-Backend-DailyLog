@@ -23,4 +23,36 @@
         WHERE ORDERABLE_STATUS = 'Y'
         ORDER BY MENU_CODE
     </select>
+
+    <!-- parameterType : menuCode 의 타입 (생략 가능하지만 권장(가독성이 좋아서))-->
+    <select id="findMenuByMenuCode" resultMap="menuResultMap" parameterType="_int">
+        SELECT
+        MENU_CODE
+        , MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        FROM TBL_MENU
+        WHERE ORDERABLE_STATUS = 'Y'
+        AND MENU_CODE = #{ menuCode } <!--# 필수!-->
+    </select>
+
+    <!-- 클래스의 타입은 경로를 작성하면 된다.-->
+    <insert id="registMenu" parameterType="com.ohgiraffers.section01.xmlconfig.MenuDTO">
+        INSERT
+        INTO TBL_MENU
+        (
+        MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        )
+        VALUES
+        (
+        #{ menuName }<!-- DTO 의 필드 명과 동일해야 setter 가 가능하다. -->
+        , #{ menuPrice }
+        , #{ categoryCode }
+        , 'Y'
+        )
+    </insert>
 </mapper>
