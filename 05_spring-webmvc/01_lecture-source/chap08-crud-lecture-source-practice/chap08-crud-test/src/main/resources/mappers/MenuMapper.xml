@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ohgiraffers.chap08crudtest.model.dao.MenuMapper">
+
+    <resultMap id="MenuMap" type="com.ohgiraffers.chap08crudtest.model.dto.MenuDTO">
+        <id property="code" column="menu_code"/>
+        <result property="name" column="menu_name"/>
+        <result property="price" column="menu_price"/>
+        <result property="category" column="category_code"/>
+        <result property="orderable" column="orderable_status"/>
+    </resultMap>
+
+    <insert id="insertMenu" parameterType="com.ohgiraffers.chap08crudtest.model.dto.MenuDTO">
+        insert into
+        tbl_menu
+        (
+        menu_name
+        , menu_price
+        , category_code
+        , orderable_status
+        )
+        values
+        (
+        #{name}
+        , #{price}
+        , #{category}
+        , #{orderable}
+        )
+    </insert>
+
+    <select id="findAllMenu" resultMap="MenuMap">
+        select
+            menu_code
+            , menu_name
+            , menu_price
+            , category_code
+            , orderable_status
+        from
+            tbl_menu
+    </select>
+</mapper>

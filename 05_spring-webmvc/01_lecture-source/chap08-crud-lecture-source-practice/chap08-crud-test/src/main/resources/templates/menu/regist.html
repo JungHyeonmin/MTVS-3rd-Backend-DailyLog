@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>regist</title>
+</head>
+<body>
+<h1>regist 페이지</h1>
+<form action="/menu/regist" method="post">
+
+    메뉴이름------
+    <label>
+        <input type="text" name="name"/>
+    </label><br>
+
+    메뉴가격------
+    <label>
+        <input type="number" name="price"/>
+    </label><br>
+
+    카테고리 코드
+    <label>
+        <input type="number" name="category"/>
+    </label><br>
+
+    판매 여부-----
+    <label>
+        <input type="text" name="orderable"/>
+    </label><br>
+
+    <button type="submit">등록</button>
+</form>
+</body>
+</html>
