@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--xml 과 연결하는 인터페이스의 경로를 정확하게 입력-->
+<mapper namespace="com.ohgiraffers.chap08crudpractice.menu.model.dao.MenuMapper">
+
+
+    <!--<resultMap> : SQl 쿼리 결과를 Java 객체(Mapper -> Service)로 매핑하는 데 사용되는 기능-->
+    <!--id : 메서드 명 type : 'resultMap' 이 매핑할  Java 객체의 클래스 타입을 정의한다.-->
+
+    <resultMap id="menuResultMap" type="com.ohgiraffers.chap08crudpractice.menu.model.dto.MenuDTO">
+        <!--id : type 에 정의된 필드, column : DB의 컬럼-->
+        <id property="code" column="menu_code"/>
+
+        <result property="name" column="menu_name"/>
+        <result property="price" column="menu_price"/>
+        <result property="categoryCode" column="category_code"/>
+        <result property="orderableStatus" column="orderable_status"/>
+    </resultMap>
+
+
+    <!--id : CategoryResultMap 이라는 메서드와 type : 클래스의 타입을 사용한다.-->
+    <resultMap id="categoryResultMap" type="com.ohgiraffers.chap08crudpractice.menu.model.dto.CategoryDTO">
+        <!-- CategoryDTO 의 필드와 DB의 CATEGORY_CODE 의 컬럼을 매칭한다.-->
+        <id property="code" column="category_code"/>
+        <result property="name" column="category_name"/>
+        <result property="refCategoryCode" column="ref_category_code"/>
+    </resultMap>
+
+
+    <!--모든 메뉴 출력-->
+    <!--<select> : DB 로부터 데이터를 조회하는 SQL 쿼리를 정의한다.-->
+    <select id="findAllMenu" resultMap="menuResultMap">
+        select
+        menu_code
+        , menu_name
+        , menu_price
+        , category_code
+        , orderable_status
+        from tbl_menu
+        where orderable_status = 'Y'
+        order by menu_code
+    </select>
+
+
+
+    <!--모든 카테고리 출력-->
+    <select id="findAllCategory" resultMap="categoryResultMap">
+        select
+        category_code
+        , category_name
+        , ref_category_code
+        from tbl_category
+    </select>
+
+
+
+    <!--<insert> : DB에 데이터를 추가하는 SQL 쿼리를 정의한다.-->
+    <!-- id : 연결하려는 메서드 이름, parameterType : 매개변수의 타입,
+       useGeneratedKeys : DB 에서 자동으로 생성된 기본 키 값을 가져온다. keyProperty : 자동 생성된 키 값을 'CategoryDTO' 객체의 code 필드에 설정한다.-->
+    <insert id="registNewMenu" parameterType="com.ohgiraffers.chap08crudpractice.menu.model.dto.MenuDTO"
+            useGeneratedKeys="true" keyProperty="code">
+        insert into tbl_menu
+        (
+        menu_name
+        , menu_price
+        , category_code
+        , orderable_status
+        )
+        values
+        (
+        #{ name }
+        , #{ price }
+        , #{ categoryCode }
+        , #{ orderableStatus }
+        )
+    </insert>
+
+</mapper>

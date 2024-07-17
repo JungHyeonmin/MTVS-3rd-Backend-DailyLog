@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">	<!-- 타임리프 활용하기(네임스키마 문법 추가) -->
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" th:href="@{ /css/common.css }" />
+</head>
+<body>
+    <h1 align="center">기타</h1>
+
+    <h2>th:with</h2>
+    <h3>지역 변수를 지정해서 쓸 수 있다.</h3>
+    <th:block th:with="start = ${ selectCriteria.startPage }, last = ${ selectCriteria.endPage }">
+        <th:block th:each="p : ${ #numbers.sequence(start, last) }">
+            <th:block th:if="${ selectCriteria.pageNo eq p }">
+                <button th:text="${ p }" disabled></button>
+            </th:block>
+            <th:block th:if="${ selectCriteria.pageNo ne p }">
+                <button th:text="${ p }"></button>
+            </th:block>
+        </th:block>
+    </th:block>
+
+    <h2>SpringEL</h2>
+    <h3>
+        변수 표현식 ${...}은 SpringEL이라는 스프링에서 제공하는 표현식을 사용할 수 있다.
+        (SpringEL은 런타임 시 메서드 호출 및 기본 문자열 템플릿 등의 기능을 제공한다.)
+        단순한 변수가 아닌 Object, List, Map같은 객체를 사용하기 위해 활용할 수 있다.
+    </h3>
+    <p>Object</p>
+    <ul>
+        <li th:text="${ member.name }"></li>
+        <li th:text="${ member['age'] }"></li>
+        <li th:text="${ member.getGender() }"></li>	<!-- 위 두가지 방식은 getter가 필요 없지만 getGender()는 반드시 해당 클래스에 getter가 있어야 한다. -->
+    </ul>
+    <p>List</p>
+    <ul>
+        <li th:text="${ memberList[1].name }"></li>
+        <li th:text="${ memberList[1]['age'] }"></li>
+        <li th:text="${ memberList[1].getGender() }"></li>	<!-- 위 두가지 방식은 getter가 필요 없지만 getGender()는 반드시 해당 클래스에 getter가 있어야 한다. -->
+        <li th:text="${ memberList.get(1).getGender() }"></li><!-- get()방식을 사용시에는 뒤에 getter나 필드명 둘 중 아무거나 써도 된다. -->
+        <li th:text="${ memberList.get(1).address }"></li>
+    </ul>
+    <p>Map</p>
+    <ul>
+        <li th:text="${ memberMap['m03'].name }"></li>
+        <li th:text="${ memberMap['m03']['age'] }"></li>
+        <li th:text="${ memberMap['m03'].getGender() }"></li>	<!-- 위 두가지 방식은 getter가 필요 없지만 getGender()는 반드시 해당 클래스에 getter가 있어야 한다. -->
+    </ul>
+
+    <h2>security 인증 정보 여부</h2>
+    <h3>타임리프에서 시큐리티 적용 시 로그인, 로그아웃에 대한 이벤트를 줄 수 있다.</h3>
+    <th:block sec:authorize="isAuthenticated()">로그인 했음</th:block>
+    <th:block sec:authorize="isAuthenticated() == false">로그인 하지 않음</th:block>
+</body>
+</html>
