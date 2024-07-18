@@ -7,8 +7,7 @@ public class MenuDTO {
     private String category;
     private String orderable;
 
-    public MenuDTO() {
-    }
+    public MenuDTO() {}
 
     public MenuDTO(int code, String name, int price, String category, String orderable) {
         this.code = code;

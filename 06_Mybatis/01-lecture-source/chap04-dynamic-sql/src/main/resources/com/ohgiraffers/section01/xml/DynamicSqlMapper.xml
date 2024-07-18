@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.section01.xml.DynamicSqlMapper">
+
+    <resultMap id="menuResultMap" type="com.ohgiraffers.common.MenuDTO">
+        <id property="menuCode" column="MENU_CODE"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuPrice" column="MENU_PRICE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+
+    <!--    HashMap 자료형을 파라미터로 넘길땐 hashmap으로 지정-->
+    <!--    우리가 만든 customType을 쓸 때는 resultMap, 자바가 제공하는건 resultType 사용-->
+    <!--    resultMap과 resultType은 둘 중 하나만 사용가능-->
+    <!--    여러 행을 반환하더라도 행 한개의 대한 타입 정보를 기록함-->
+    <select id="findMenuByPrice" parameterType="hashmap" resultMap="menuResultMap">
+    <!--        오른쪽 왼쪽을 맞춰서 정렬, 모든 컬럼에 별칭(A,B,C)을 붙이는 것이 관례이다.-->
+        SELECT /*+ com.ohgiraffers.section01.xml.DynamicSqlMapper#findMenuByPrice() */
+                A.MENU_CODE
+                , A.MENU_NAME
+                , A.MENU_PRICE
+                , A.CATEGORY_CODE
+                , A.ORDERABLE_STATUS
+        FROM    TBL_MENU A
+        WHERE   A.ORDERABLE_STATUS = 'Y'
+
+        <!--OGNL 표기법 - 0보다 크고 10000 보다 작은-->
+        <if test="price gt 0 and price lte 10000">
+        <!-- '<'(오른쪽 꺽새)는 태그 시작인지 헷갈리기 때문에 CDATA 주석을 사용한다 : <![CDATA[]] -->
+            <![CDATA[
+           AND A.MENU_PRICE < #{ price }
+        ]]>
+        </if>
+        <if test="price gt 10000 and price lte 20000">
+            AND A.MENU_PRICE BETWEEN 10000 AND #{ price }
+        </if>
+        <if test="price gt 20000 and price lte 30000">
+            AND A.MENU_PRICE BETWEEN 20000 AND #{ price }
+        </if>
+        <if test="price gt 30000">
+            AND A.MENU_PRICE BETWEEN AND #{ price }
+        </if>
+        ORDER BY A.MENU_CODE
+    </select>
+</mapper>
