@@ -1,13 +1,11 @@
 package com.ohgiraffers.common;
 
-// Criteria : 기준
 public class SearchCriteria {
 
     private String condition;
     private String value;
 
-    public SearchCriteria() {
-    }
+    public SearchCriteria() {}
 
     public SearchCriteria(String condition, String value) {
         this.condition = condition;

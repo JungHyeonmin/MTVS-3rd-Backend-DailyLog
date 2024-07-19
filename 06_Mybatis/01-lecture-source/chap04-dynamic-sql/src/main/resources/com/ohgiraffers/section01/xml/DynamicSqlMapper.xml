@@ -18,19 +18,19 @@
     <!--    resultMap과 resultType은 둘 중 하나만 사용가능-->
     <!--    여러 행을 반환하더라도 행 한개의 대한 타입 정보를 기록함-->
     <select id="findMenuByPrice" parameterType="hashmap" resultMap="menuResultMap">
-    <!--        오른쪽 왼쪽을 맞춰서 정렬, 모든 컬럼에 별칭(A,B,C)을 붙이는 것이 관례이다.-->
+        <!--        오른쪽 왼쪽을 맞춰서 정렬, 모든 컬럼에 별칭(A,B,C)을 붙이는 것이 관례이다.-->
         SELECT /*+ com.ohgiraffers.section01.xml.DynamicSqlMapper#findMenuByPrice() */
-                A.MENU_CODE
-                , A.MENU_NAME
-                , A.MENU_PRICE
-                , A.CATEGORY_CODE
-                , A.ORDERABLE_STATUS
-        FROM    TBL_MENU A
-        WHERE   A.ORDERABLE_STATUS = 'Y'
+        A.MENU_CODE
+        , A.MENU_NAME
+        , A.MENU_PRICE
+        , A.CATEGORY_CODE
+        , A.ORDERABLE_STATUS
+        FROM TBL_MENU A
+        WHERE A.ORDERABLE_STATUS = 'Y'
 
         <!--OGNL 표기법 - 0보다 크고 10000 보다 작은-->
         <if test="price gt 0 and price lte 10000">
-        <!-- '<'(오른쪽 꺽새)는 태그 시작인지 헷갈리기 때문에 CDATA 주석을 사용한다 : <![CDATA[]] -->
+            <!-- '<'(오른쪽 꺽새)는 태그 시작인지 헷갈리기 때문에 CDATA 주석을 사용한다 : <![CDATA[]] -->
             <![CDATA[
            AND A.MENU_PRICE < #{ price }
         ]]>
@@ -44,6 +44,51 @@
         <if test="price gt 30000">
             AND A.MENU_PRICE BETWEEN AND #{ price }
         </if>
+        ORDER BY A.MENU_CODE
+    </select>
+
+    <!-- 풀클래스 이름을 적는 것이 불편할때 렐리어러시스로 설정해서 간략하게 사용 가능-->
+    <select id="searchMenu" parameterType="SearchCriteria" resultMap="menuResultMap">
+        SELECT
+        A.MENU_CODE
+        , A.MENU_NAME
+        , A.MENU_PRICE
+        , A.CATEGORY_CODE
+        , A.ORDERABLE_STATUS
+        FROM TBL_MENU A
+        <if test="condition == 'category'">
+            JOIN TBL_CATEGORY B ON (A.CATEGORY_CODE = B.CATEGORY_CODE)
+        </if>
+        WHERE A.ORDERABLE_STATUS = 'Y'
+        <if test="condition == 'name'">
+            AND A.MENU_NAME LIKE CONCAT('%', #{ value }, '%')
+        </if>
+        <if test="condition == 'category'">
+            AND B.CATEGORY_NAME = #{ value }
+        </if>
+        ORDER BY A.MENU_CODE
+    </select>
+
+    <select id="searchMenuBySupCategory" resultMap="menuResultMap">
+        SELECT
+        A.MENU_CODE
+        , A.MENU_NAME
+        , A.MENU_PRICE
+        , A.CATEGORY_CODE
+        , A.ORDERABLE_STATUS
+        FROM TBL_MENU A
+        WHERE A.ORDERABLE_STATUS = 'Y'
+        <choose>
+            <when test="value == '식사'">
+                AND A.CATEGORY_CODE IN (4, 5, 6, 7)
+            </when>
+            <when test="value == '음료'">
+                AND A.CATEGORY_CODE IN (8, 9, 10)
+            </when>
+            <otherwise>
+                AND A.CATEGORY_CODE IN (11, 12)
+            </otherwise>
+        </choose>
         ORDER BY A.MENU_CODE
     </select>
 </mapper>
