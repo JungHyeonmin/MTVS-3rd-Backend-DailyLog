@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta charset="UTF-8">
+    <title>아이템 목록</title>
+</header>
+
+<body>
+
+<h1>획득 가능 목록
+    <button onclick="location.href='/list'">리스트</button>
+</h1>
+
+<table>
+    <tr>
+        <th>아이템 이름</th>
+        <th>카테고리</th>
+        <th>설명</th>
+        <th>가격</th>
+        <th></th>
+    </tr>
+    <tr th:each="item:${itemList}">
+        <td th:text="${item.itemName}"></td>
+        <td th:text="${item.itemCategory}"></td>
+        <td th:text="${item.itemDescription}"></td>
+        <td th:text="${item.itemPrice}"></td>
+        <td>
+            <form action="/addItem" method="post">
+                <button name="itemNo" th:value="${item.itemNo}">인벤토리에 추가</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

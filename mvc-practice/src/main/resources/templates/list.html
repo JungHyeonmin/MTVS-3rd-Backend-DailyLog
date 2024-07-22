@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>유저 페이지</title>
+</header>
+
+<body>
+<h1 th:text="|${session.loginPlayer.playerName} 환영합니다.|"></h1>
+<button onclick="location.href='getItem'">아이템 획득</button>
+<button onclick="location.href='purchaseItem'">아이템 구매</button>
+<button onclick="location.href='openInventory'">인벤토리 보기</button>
+<button onclick="location.href='changePlayerName'">닉네임 변경</button>
+
+<button onclick="location.href='/'">로그아웃</button>
+</body>
+</html>

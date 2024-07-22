@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ohgiraffers.mvcpractice.model.dao.GetItemMapper">
+    <resultMap id="itemMapper" type="com.ohgiraffers.mvcpractice.model.dto.ItemDTO">
+        <id property="itemNo" column="ITEM_NO"/>
+        <result property="itemName" column="ITEM_NAME"/>
+        <result property="itemCategory" column="ITEM_CATEGORY"/>
+        <result property="itemDescription" column="ITEM_DESCRIPTION"/>
+        <result property="itemPrice" column="ITEM_PRICE"/>
+    </resultMap>
+
+    <select id="findAllItem" resultMap="itemMapper">
+        SELECT ITEM_NO
+            ,  ITEM_NAME
+            ,  ITEM_CATEGORY
+            ,  ITEM_DESCRIPTION
+            ,  ITEM_PRICE
+        FROM
+               TBL_ITEM
+    </select>
+
+    <insert id="insertUserInventory" parameterType="hashmap">
+        INSERT INTO TBL_INVENTORY
+                    (
+                    INVENTORY_PLAYER_NO
+                    , INVENTORY_ITEM_NO
+                    , INVENTORY_AMOUNT
+                    )
+        VALUES
+                    (
+                    #{ playerNo }
+                    , #{ itemNo }
+                    , 1
+        )
+        ON DUPLICATE KEY UPDATE
+                    INVENTORY_PLAYER_NO = #{ playerNo }
+                    , INVENTORY_ITEM_NO = #{ itemNo }
+                    , INVENTORY_AMOUNT = INVENTORY_AMOUNT + 1
+    </insert>
+
+<!--    <update id="insertUserInventory" parameterType="hashmap">
+        MERGE INTO TBL_INVENTORY
+        USING ON
+                (
+                INVENTORY_PLAYER_NO = #{ playerNo }
+                AND INVENTORY_ITEM_NO = #{ itemNo }
+                )
+
+        WHEN MATCHED THEN
+            UPDATE
+                SET INVENTORY_AMOUNT = INVENTORY_AMOUNT + 1
+        WHEN NOT MATCHED THEN
+            INSERT (
+                    #{ playerNo }
+                    , #{ itemNo }
+                    , 1
+                    )
+    </update>-->
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.ohgiraffers.mvcpractice.model.dao.GetInventoryMapper">
+
+    <resultMap id="inventoryItemJoinResultMap" type="com.ohgiraffers.mvcpractice.model.dto.InventoryItemDTO">
+
+        <id property="inventoryPlayerNo" column="INVENTORY_PLAYER_NO"/>
+        <id property="inventoryItemNo" column="INVENTORY_ITEM_NO"/>
+
+        <result property="inventoryAmount" column="INVENTORY_AMOUNT"/>
+        <!-- ItemDTO 를 association 로 사용하면 되는데 -> dto 안의 dto 를 조회할 수 있는 기능이다.0 -->
+        <association property="item" javaType="com.ohgiraffers.mvcpractice.model.dto.ItemDTO">
+            <id property="itemNo" column="ITEM_NO"/>
+            <result property="itemName" column="ITEM_NAME"/>
+        </association>
+
+    </resultMap>
+    <!-- select 추가-->
+
+    <select id="findAllInventory" resultMap="inventoryItemJoinResultMap">
+        SELECT  A.INVENTORY_PLAYER_NO
+                , A.INVENTORY_ITEM_NO
+                , A.INVENTORY_AMOUNT
+                , B.ITEM_NO
+                , B.ITEM_NAME
+        FROM    TBL_INVENTORY A
+                JOIN TBL_ITEM B
+                ON A.INVENTORY_ITEM_NO = B.ITEM_NO
+        WHERE
+                A.INVENTORY_PLAYER_NO = #{ playerNo }
+
+    </select>
+</mapper>
