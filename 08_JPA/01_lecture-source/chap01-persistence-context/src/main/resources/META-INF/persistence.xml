@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
 
-    <persistence-unit name="ohgiraffers"> <!-- 설정을 식별하기 위한 이름-->
+    <persistence-unit name="ohgiraffers">
+        <class>com.ohgiraffers.persistence.section02.crud.Menu</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/menudb"/>
             <property name="javax.persistence.jdbc.user" value="ohgiraffers"/>
             <property name="javax.persistence.jdbc.password" value="ohgiraffers"/>
-
-            <!--콘솔에 출력해준다는 property-->
             <property name="hibernate.show_sql" value="true"/>
-            <!--출력을 가독성 있게 해주는 property-->
             <property name="hibernate.format_sql" value="true"/>
-
         </properties>
     </persistence-unit>
 </persistence>

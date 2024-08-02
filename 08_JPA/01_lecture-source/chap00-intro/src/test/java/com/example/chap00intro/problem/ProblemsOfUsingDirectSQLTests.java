@@ -56,13 +56,19 @@ public class ProblemsOfUsingDirectSQLTests {
         con.setAutoCommit(false);
     }
 
+    @Test
+    public void testConnection() {
+
+        Assertions.assertNotNull(con);
+    }
+
     @DisplayName("직접 SQL 을 작성하여 메뉴를 조회할 때 발생하는 문제 확인") // test Results 에 나오는 이름을 변경해준다.
     @Test
-    public void testConnection() throws SQLException {
+    public void testDirectSelectSQL() throws SQLException {
         // Assertions.assertNotNull(con);
 
         // given
-        String query = "SELECT MENU_CODE, MENU_NAME, MENU_PRICE, CATEGORY+CODE, ORDERABLE_STATUS FROM TBL_MENU";
+        String query = "SELECT MENU_CODE, MENU_NAME, MENU_PRICE, CATEGORY_CODE, ORDERABLE_STATUS FROM TBL_MENU";
 
         // when
         Statement stmt = con.createStatement();
@@ -73,20 +79,20 @@ public class ProblemsOfUsingDirectSQLTests {
         while (rset.next()) {
             Menu menu = new Menu();
             menu.setMenuCode(rset.getInt("MENU_CODE"));
-            menu.setMenuCode(rset.getInt("MENU_NAME"));
-            menu.setMenuCode(rset.getInt("MENU_PRICE"));
-            menu.setMenuCode(rset.getInt("CATEGORY_CODE"));
-            menu.setMenuCode(rset.getInt("ORDERABLE_STATUS"));
+            menu.setMenuName(rset.getString("MENU_NAME"));
+            menu.setMenuPrice(rset.getInt("MENU_PRICE"));
+            menu.setCategoryCode(rset.getInt("CATEGORY_CODE"));
+            menu.setOrderableStatus(rset.getString("ORDERABLE_STATUS"));
 
             menus.add(menu);
         }
 
-        // then
+        //then (verify)
         Assertions.assertNotNull(menus);
         menus.forEach(System.out::println);
 
         rset.close();
-        con.close();
+        stmt.close();
     }
 
     @DisplayName("직접 SQL 을 작성하여 신규 메뉴를 추가 시 발생하는 문제 확인")
@@ -102,19 +108,18 @@ public class ProblemsOfUsingDirectSQLTests {
         menu.setCategoryCode(9);
         menu.setOrderableStatus("Y");
 
-        String query = "INSERT INTO TBL_MENU(MENU_NAME, MENU_PRICE, MENU_CODE, CATEGORY_CODE, ORDERABLE_STATUS) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO TBL_MENU(MENU_NAME, MENU_PRICE, CATEGORY_CODE, ORDERABLE_STATUS) VALUES(?,?,?,?)";
 
         // when
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setString(1, menu.getMenuName());
         pstmt.setDouble(2, menu.getMenuPrice());
-        pstmt.setInt(3, menu.getMenuCode());
-        pstmt.setInt(4, menu.getCategoryCode());
-        pstmt.setString(5, menu.getOrderableStatus());
+        pstmt.setInt(3, menu.getCategoryCode());
+        pstmt.setString(4, menu.getOrderableStatus());
 
         int result = pstmt.executeUpdate();
 
-        // then
+        //then
         Assertions.assertEquals(1, result);
         pstmt.close();
 
@@ -131,25 +136,25 @@ public class ProblemsOfUsingDirectSQLTests {
     @Test
     public void testChangeSelectColumns() throws SQLException {
 
-        String query = "SELECT MENU_CODE, MENU_NAME FORM TBL_MENU";
+        String query = "SELECT MENU_CODE, MENU_NAME FROM TBL_MENU";
 
         Statement stmt = con.createStatement();
         ResultSet rset = stmt.executeQuery(query);
 
         List<Menu> menus = new ArrayList<>();
-
-        while (rset.next()) {
-
+        while(rset.next()) {
             Menu menu = new Menu();
             menu.setMenuCode(rset.getInt("MENU_CODE"));
-            menu.setMenuCode(rset.getInt("MENU_NAME"));
+            menu.setMenuName(rset.getString("MENU_NAME"));
 
-            rset.close();
-            stmt.close();
-
-            Assertions.assertNotNull(menus);
-            menus.forEach(System.out::println);
+            menus.add(menu);
         }
+
+        rset.close();
+        stmt.close();
+
+        Assertions.assertNotNull(menus);
+        menus.forEach(System.out::println);
     }
 
     @DisplayName("연관된 객체 문제 확인")
@@ -157,27 +162,27 @@ public class ProblemsOfUsingDirectSQLTests {
     public void testAssociatedObject() throws SQLException {
 
         String query =
-                "SELECT A.MENU_CODE, A.MENU_NAME, A.MENU_PRICE, A.CATEGORY_CODE, A.ORDERABLE_STATUS"
-                        + " FROM TBL_MENU A " // 띄어쓰기 필수!
-                        + "JOIN TBL_CATEGORY B ON(A.CATEGORY_CODE=B.CATEGORY_CODE)";
+                "SELECT A.MENU_CODE, A.MENU_NAME, A.MENU_PRICE, B.CATEGORY_CODE, B.CATEGORY_NAME, A.ORDERABLE_STATUS "
+                        + "FROM TBL_MENU A "
+                        + "JOIN TBL_CATEGORY B ON(A.CATEGORY_CODE = B.CATEGORY_CODE)";
 
         Statement stmt = con.createStatement();
         ResultSet rset = stmt.executeQuery(query);
 
         List<MenuAndCategory> menuAndCategories = new ArrayList<>();
+        while(rset.next()) {
 
-        while (rset.next()) {
             MenuAndCategory menuAndCategory = new MenuAndCategory();
             menuAndCategory.setMenuCode(rset.getInt("MENU_CODE"));
-            menuAndCategory.setMenuCode(rset.getInt("MENU_NAME"));
-            menuAndCategory.setMenuCode(rset.getInt("MENU_PRICE"));
+            menuAndCategory.setMenuName(rset.getString("MENU_NAME"));
+            menuAndCategory.setMenuPrice(rset.getInt("MENU_PRICE"));
 
             Category category = new Category();
             category.setCategoryCode(rset.getInt("CATEGORY_CODE"));
             category.setCategoryName(rset.getString("CATEGORY_NAME"));
 
             menuAndCategory.setCategory(category);
-            menuAndCategory.setOrderalbeStatus(rset.getString("ORDERABLE_STATUS"));
+            menuAndCategory.setOrderableStatus(rset.getString("ORDERABLE_STATUS"));
 
             menuAndCategories.add(menuAndCategory);
         }
@@ -187,19 +192,19 @@ public class ProblemsOfUsingDirectSQLTests {
 
         rset.close();
         stmt.close();
-
     }
 
-    @DisplayName("조회한 두 개의 행을 담은 객체의 동일성 비교 테스트") // 동일성 : 값과 주소가 같다. // 동등성 : 값만 같다.
+    @DisplayName("조회한 두 개의 행을 담은 객체의 동일성 비교 테스트")
     @Test
     public void testEquals() throws SQLException {
+
         String query = "SELECT MENU_CODE, MENU_NAME FROM TBL_MENU WHERE MENU_CODE = 12";
 
         Statement stmt1 = con.createStatement();
         ResultSet rset1 = stmt1.executeQuery(query);
 
-        Menu menu1 = new Menu();
-        while (rset1.next()) {
+        Menu menu1 = null;
+        while(rset1.next()) {
             menu1 = new Menu();
             menu1.setMenuCode(rset1.getInt("MENU_CODE"));
             menu1.setMenuName(rset1.getString("MENU_NAME"));
@@ -208,8 +213,8 @@ public class ProblemsOfUsingDirectSQLTests {
         Statement stmt2 = con.createStatement();
         ResultSet rset2 = stmt2.executeQuery(query);
 
-        Menu menu2 = new Menu();
-        while (rset2.next()) {
+        Menu menu2 = null;
+        while(rset2.next()) {
             menu2 = new Menu();
             menu2.setMenuCode(rset2.getInt("MENU_CODE"));
             menu2.setMenuName(rset2.getString("MENU_NAME"));
@@ -221,11 +226,10 @@ public class ProblemsOfUsingDirectSQLTests {
         System.out.println("menu1 = " + menu1);
         System.out.println("menu2 = " + menu2);
 
-        stmt1.close();
         rset1.close();
-        stmt2.close();
         rset2.close();
-
+        stmt1.close();
+        stmt2.close();
     }
 
     // Menu menu1 = entityManager.find(Menu.class);

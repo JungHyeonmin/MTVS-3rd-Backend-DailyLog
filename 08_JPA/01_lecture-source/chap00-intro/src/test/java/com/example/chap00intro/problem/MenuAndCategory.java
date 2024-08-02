@@ -81,4 +81,8 @@ public class MenuAndCategory {
                 ", orderalbeStatus='" + orderalbeStatus + '\'' +
                 '}';
     }
+
+    public void setOrderableStatus(String orderableStatus) {
+        this.orderalbeStatus = orderableStatus;
+    }
 }
