@@ -32,8 +32,8 @@ public class EntityManagerGeneratorTests {
     // 따라서 데이터베이스를 사용하는 애플리케이션 당 한 개의 EntityManagerFacgory를 생성한다.
 
 
-    @Test
-    @DisplayName("엔티티 매니저 팩토리 생성 확인")
+    @Test // 테스트 메서드에 붙여서 JUnit 이 메서드를 테스트로 실행하도록 지정
+    @DisplayName("엔티티 매니저 팩토리 생성 확인") // 테트스 메서드의 이름을 설정
     void testGenerateEntityManagerFactory() {
 
         EntityManagerFactory factory = EntityManagerFactoryGenerator.getInstance();
