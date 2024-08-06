@@ -1,4 +1,4 @@
-package com.example.mapping.section01.entity;
+package com.ohgiraffers.mapping.section01.entity;
 
 import jakarta.persistence.*;
 

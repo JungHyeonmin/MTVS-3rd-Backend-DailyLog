@@ -1,10 +1,8 @@
-package com.example.mapping.section01.entity;
+package com.ohgiraffers.mapping.section01.entity;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.beans.Transient;
 
 @Service
 public class MemberRegistService {

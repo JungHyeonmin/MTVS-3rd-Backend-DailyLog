@@ -1,17 +1,16 @@
-package com.example.mapping.section01.entity;
+package com.ohgiraffers.mapping.section03.compositekey.subsection01.embeddedid;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberRepository {
+public class LikeRepository {
 
     @PersistenceContext
     private EntityManager manager;
 
-    public void save(Member member) {
-        manager.persist(member);
+    public void save(Like like) {
+        manager.persist(like);
     }
-
 }
