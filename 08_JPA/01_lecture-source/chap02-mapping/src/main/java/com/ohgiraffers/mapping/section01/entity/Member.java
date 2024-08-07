@@ -28,6 +28,14 @@ public class Member {
     // 3. TABLE : 키 생성 테이블을 사용한다.
     private int memberNo;
 
+    // name : 매핑할 데이터베이스 컬럼의 이름을 지정
+    // unique : 이 컬럼의 값은 테이블 내에서 중복가능 여부
+    // nullable : null 값 허용 여부
+    // columnDefinition : 데이터베이스에서 사용할 컬럼의 SQL 정의를 직접 정의한다.
+    //                  -> 컬럼을 varchar(10)타입으로 지정(최대 10자의 문자열을 저장할 수 있다.)
+    //                  -> default 'Y' : 컬럼에 값이 명시되지 않으면 기본값으로 'Y'를 가진다.
+    // length : 문자열 컬럼의 최대 길이를 설정 -> (500자)
+
     @Column(name = "MEMBER_ID", unique = true, nullable = false, columnDefinition = "varchar(10)")
     private String memberId;
 

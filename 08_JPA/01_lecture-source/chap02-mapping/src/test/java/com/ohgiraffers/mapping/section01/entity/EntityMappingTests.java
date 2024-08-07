@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
-@SpringBootTest
-@Transactional
+@SpringBootTest // 기본적인 스프링 부트 테스트 어노테이션
+@Transactional // 선언적 데이터베이스 트랜잭션 관리 방법 제공 클래스와 메서드에 사용 가능, commit, rollback
 public class EntityMappingTests {
 
     /**
