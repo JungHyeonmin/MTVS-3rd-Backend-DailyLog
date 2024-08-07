@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 @SpringBootTest // 기본적인 스프링 부트 테스트 어노테이션
-@Transactional // 선언적 데이터베이스 트랜잭션 관리 방법 제공 클래스와 메서드에 사용 가능, commit, rollback
+// @Transactional // 선언적 데이터베이스 트랜잭션 관리 방법 제공 클래스와 메서드에 사용 가능, commit, rollback
 public class EntityMappingTests {
 
     /**
@@ -24,8 +24,6 @@ public class EntityMappingTests {
      * 필드와 컬럼 매핑 : @Column
      * 연관관계 매핑 : @ManyToOne, @OneToMany, @JoinColumn
      */
-
-
     @Autowired
     private MemberRegistService memberRegistService;
 
@@ -37,6 +35,7 @@ public class EntityMappingTests {
                         "pass01",
                         "홍길동",
                         "010-1234-5678",
+                        "서울시 서초구",
                         LocalDateTime.now(),
                         "ROLE_MEMBER",
                         "Y"
@@ -47,8 +46,9 @@ public class EntityMappingTests {
                         "pass02",
                         "유관순",
                         "010-1234-3131",
+                        "서울시 서초구",
                         LocalDateTime.now(),
-                        "ROLE_MEMBER",
+                        "ROLE_ADMIN",
                         "Y"
                 )
         );
@@ -59,7 +59,7 @@ public class EntityMappingTests {
     @MethodSource("createMember")
     void testCreateTable(int memberNo, String memberId, String memberPwd, String memberName,
                          String phone, String address, LocalDateTime enrollDate, MemberRole memberRole, String status) {
-
+        // 회원 정보 객체 생성 - db에 저장할 정보를 DTO 에 저장해서 전달
         MemberRegistRequestDTO memberInfo = new MemberRegistRequestDTO(
                 memberId,
                 memberPwd,
@@ -71,7 +71,7 @@ public class EntityMappingTests {
                 status
         );
 
-        Assertions.assertDoesNotThrow( // exception 이 발생하지 않으면 true
+        Assertions.assertDoesNotThrow(
                 () -> memberRegistService.registMember(memberInfo)
         );
     }
