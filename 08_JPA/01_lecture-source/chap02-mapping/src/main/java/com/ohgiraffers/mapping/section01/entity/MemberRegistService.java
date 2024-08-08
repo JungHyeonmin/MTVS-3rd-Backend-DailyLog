@@ -18,7 +18,7 @@ public class MemberRegistService {
     // DTO 와 Entity 의 변환도 Service 의 역할이다.
     @Transactional
     public void registMember(MemberRegistRequestDTO memberInfo) {
-
+        // Member 생성자를 이용해서 엔티티 생성 후 바로 테이블에 값 대입
         Member member = new Member(
                 memberInfo.getMemberId(),
                 memberInfo.getMemberPwd(),
@@ -32,5 +32,4 @@ public class MemberRegistService {
 
         memberRepository.save(member);
     }
-
 }
