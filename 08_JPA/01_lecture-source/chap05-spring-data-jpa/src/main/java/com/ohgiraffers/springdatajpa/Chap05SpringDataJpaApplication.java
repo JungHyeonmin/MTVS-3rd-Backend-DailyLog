@@ -1,4 +1,4 @@
-package com.example.springdatajpa;
+package com.ohgiraffers.springdatajpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
