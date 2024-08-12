@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // JSX는 편리한 문법이지만 몇 가지 규칙을 준수해야 한다.
+        // 동일한 레벨의 노드들이 연달아 정의되는 경우 문법적 에러가 발생한다.
+
+        // 여러 형제 레벨의 엘리먼트를 정의해야 하는 경우
+        // 하나의 부모 엘리먼트로(div태그와 같은) 감싸야 하는데,
+        // div 요소 같은 실질적인 요소를 사용하지 않으려면
+        // Fragment를 이용할 수 있다. (리엑트 16버전부터 추가됨)
+
+        // const element = (
+        //     <h1>hello</h1>
+        //     <h3>phone</h3>
+        // )
+
+        const user = {
+            name: 'gildong',
+            phone: '010-1234-5678'
+        };
+
+        // const element = (
+        //     <div>
+        //         <h1>Hello, {user.name}</h1>
+        //         <h3>phone : {user.phone}</h3>
+        //     </div>
+        // );
+
+
+        // console.log(react);
+        // // 구조물의 할당 로그
+        // const { Fragment } = React;
+        // const element = (
+        //     <React.Fragment>
+        //         <h1>Hello, {user.name}</h1>
+        //         <h3>phone : {user.phone}</h3>
+        //     </React.Fragment>
+        //
+
+        const element = (
+            // Babel 17 이상부터 지원함
+            <>
+                <h1>Hello, {user.name}</h1>
+                <h3>phone : {user.phone}</h3>
+            </>
+        )
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element)
+    </script>
+</body>
+
+</html>

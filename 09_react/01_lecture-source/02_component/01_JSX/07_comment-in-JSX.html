@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <!--
+    Html 주석
+    -->
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            javascript 여러 줄 주석
+        */
+
+        // javascript 한 줄 주석
+
+        const element = (
+            <>
+                <h1>Comment in JSX</h1>
+                {/* JSX 내에서 여러 줄 주석은 이렇게 작성합니다.*/}
+                {
+                    // JSX 내의 한 줄 주석은 표현식을 한 줄이 아닌 여러 줄로 적용해야 한다.
+                }
+
+                <h3
+                    className="text" // 시작 태그에도 주석을 작성할 수 있다.
+                    id ="hello"
+                >
+                    JSX 내의 주석 사용하는 방법
+                </h3> {/* 닫기 태그는 태그 내부에 주석을 일반적으로 작성하지 않는다. */}
+                /* 이런 주석이나 */
+                // 이런 주석은 그대로 화면에 나타난다.
+                </>
+        )
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+    </script>
+</body>
+
+</html>

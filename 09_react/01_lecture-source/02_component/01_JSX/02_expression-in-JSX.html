@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세줄은 항상 들고 다녀라~-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function formatName(user) {
+            return `${user.lastName} ${user.firstName}`;
+        }
+
+        const user = {
+            firstNme: 'Fildong',
+            lastname: 'Hong'
+        };
+
+        const element = <h1>Hello, {formatName(user)}</h1>; 
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+    </script>
+</body>
+
+</html>

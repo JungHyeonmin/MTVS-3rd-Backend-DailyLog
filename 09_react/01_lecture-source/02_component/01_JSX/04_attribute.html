@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        .highlight {
+            background-color: olivedrab;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // attribute와 property의 차이점
+        // attribute :  
+        // property  : 
+
+        // JSX를 이용해 엘리먼트를 정의할 시 attribute도 정의할 수 있다.
+        // 주의할 사항은 class라는 속성은 className이라는 속성으로 사용해야 한다.
+        // for라는 속성은 htmlFor로 사용해야 한다.
+        // 이벤트 관련 속성은 낙타등 표기봉 표기법으로 사용해야 한다.(onclick -> onClick)
+
+        // JSX문법에서 속성값을 부여하는 방식은 크게 두 가지로 나뉜다.
+        // 1. 문자열로 속성값을 정의하는 방식
+        // 2. JS 표현식({})이용하여 정의하는 방식
+
+        // 문자열로 속성값 정의할 때 이벤트 관련 어트리뷰트는 적용되지 않는다.
+        // const element = <h1 id="title" className="highlight">Hello World!!!</h1>
+        
+        const id = "title";
+        const className="highlight";
+        
+        const element=<h1 id={id} className={className} onClick={text}>Hello World!!!</h1>
+
+        function text() {
+            console.log('클릭했네?');
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+    </script>
+</body>
+
+</html>

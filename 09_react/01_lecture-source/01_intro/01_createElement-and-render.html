@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--react 개발 환경 설정-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+</head>
+<body>
+    <div id="root"></div>
+     <script>
+        // <h1 class="greeting" id="greeting">hello world!</h1>
+        const greetingElement = React.createElement('h1', {class: 'greeting', id: 'greeting'}, 'hello world!!') // 이름, 속성
+        const textElement = React.createElement('h3',{id: 'name'}, '안녕하세요. 홍길동입니다.');
+
+        const domcontainer = document.getElementById('root');
+        const root = ReactDOM.createRoot(domcontainer);
+        root.render([greetingElement,textElement]);
+     </script>
+</body>
+</html>

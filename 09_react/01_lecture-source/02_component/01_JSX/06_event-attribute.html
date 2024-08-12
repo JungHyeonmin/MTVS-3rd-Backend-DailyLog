@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // // 1. 인라인 방식
+        // const element = (
+        //     <>
+        //         <h1>Event Attribute</h1>
+
+        //         <button onClick={() => alert('Hello World!')}>클릭하세요</button>
+        //     </>
+        // );
+        // // <button onclick ="test();"> - 함수 자체를 넣어라
+
+            
+        // 2. 이벤트 핸들러 사전 정의
+        const onClickHandler = () => alert('Hello World!');
+
+        const element = (
+            <>
+                <h1>Event Attribute</h1>
+                <button onClick={onClickHandler}>클릭하세요</button>
+            </>
+        );
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+    </script>
+</body>
+
+</html>
