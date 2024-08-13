@@ -80,7 +80,7 @@
             /* 자식 요소를 수직으로 중앙에 정렬 */
             margin: 50px 600px;
             /* 좌우에 600픽셀의 여백을 설정 */
-            text-align: center;
+            text-align: left;
             /* 텍스트를 중앙에 정렬 */
         }
 
@@ -112,7 +112,7 @@
             /* 리스트 아이템 앞에 기본으로 붙는 마커를 없앰 */
             width: 100%;
             /* 너비를 부모 요소에 맞춤 */
-            padding: 0 20px;
+            padding: 0 100px;
             /* 리스트의 좌우에 20픽셀의 내부 여백을 설정 */
         }
 
@@ -183,10 +183,28 @@
             const contentList = contents.map(content =>
                 <li key={content.id}>
                     <label>
-                        <input type="checkbox" />
-                        {content.content}
+                        {/*만약 체크면 <del> 태그 적용*/}
+                        <input type="checkbox" checked={content.checked}
+                            onChanke={() => onCheckChange(contnet.id)} />
+
+                        {content.checked} ? {content.content}:<del>{content.content}</del>
+
+                        <button type="button" img src="02_component\x버튼.png"
+                            onClick={() => onRemove(content.id)}>삭제</button>
+
                     </label>
                 </li>);
+
+            {/*요소 삭제*/ }
+            const onRemove = id => {
+                const changedContents = contents.filter(content => content.id !== id);
+                setContents(changedContents);
+            }
+
+            // 이어서 ㄱㄱ
+            const oncheck = checked => {
+                const changedChecked = contents.filter(con)
+            }
 
             return (
                 <>

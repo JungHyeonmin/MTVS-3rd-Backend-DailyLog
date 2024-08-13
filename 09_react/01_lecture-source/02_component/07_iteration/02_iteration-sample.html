@@ -46,7 +46,8 @@
                 setNames(changedNames);
             }
 
-            const nameList = names.map(name => <li key={name.id} onDoubleClick={() => onRemove(name.id)}>{name.name}</li>);
+            const nameList = names.map(name =>
+            <li key={name.id} onDoubleClick={() => onRemove(name.id)}>{name.name}</li>);
 
             return (
                 <>
