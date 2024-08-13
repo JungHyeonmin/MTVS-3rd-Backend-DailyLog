@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <!--이 세 줄은 항상 들고 다녀라~!-->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
 </head>
-
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        // state는 리액트에서 반.드.시 이해해야 하는 녀석이다..!
-        // -> 함수형 컴포넌트에서 state 다루는거 연습!
 
         class Counter extends React.Component {
 
@@ -26,41 +19,46 @@
             };
 
             render() {
-                const { number } = this.state;
+                const {number} = this.state;
 
                 return (
                     <>
-                        <h1 style={(number < 0) ? { color: 'red' } : { color: 'blue' }}>
-                            Count: {number}
+                        <h1
+                            style={(number < 0)? {color: 'red'}: {color: 'blue'}}
+                        >
+                            Count : {number}
                         </h1>
+                        <button onClick={() => this.setState({number: number - 1})}>- 1</button>
+                        <button onClick={
+                            () => {
+                                // console.log(`before setState number : ${this.state.number}`);
+                                // this.setState({number: number + 1});
+                                // console.log(`after setState number : ${this.state.number}`);
+                                // this.setState({number: this.state.number + 1});
+                                // console.log(`after setState number : ${this.state.number}`);
 
-                        <button onClick={() => this.setState({ number: number - 1 })}>- 1</button>
-                        <button onClick={() => {
-                            // console.log(`before setState number : ${this.state.number}`);
-                            //  // 즉각적으로 반영되는 게 아니라 임시로 메모리공간에 보관되어 있다가 랜더링이 끝나면 반영한다.
-                            //  // 그래서 beforeSetState와 afterSetState가 같은 값이 나온다.
-                            // this.setState({ number: number + 1 });
-                            // console.log(`after setState number: ${this.state.number}`);
-                            // this.setState({ number: number + 1 });
-                            // console.log(`after setState number: ${this.state.number}`);
+                                this.setState((prevState, props) => {
+                                    return {
+                                        number: prevState.number + 1
+                                    }
+                                });
 
-                            this.setState(preState, props) => {
-                                return {
-                                    number: prevState.number + 1
-                                }
-                            });
+                                this.setState((prevState, props) => {
+                                    return {
+                                        number: prevState.number + 1
+                                    }
+                                });
+                            }
                         }
                         >
                             + 1
                         </button>
-                    </>
+                    </>  
                 );
-
             }
         }
 
-        ReactDOM.createRoot(document.getElementById('root')).render(<Counter />);
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
     </script>
 </body>
-
 </html>

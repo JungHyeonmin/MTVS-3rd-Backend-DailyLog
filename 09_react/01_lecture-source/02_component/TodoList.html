@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 패딩과 테두리를 포함한 박스 모델 사용 */
+        }
+
+        html, body {
+            height: 100%; /* 화면 높이의 100% */
+            width: 100%; /* 화면 너비의 100% */
+          
+            justify-content: center; /* 수평 가운데 정렬 */
+            align-items: center; /* 수직 가운데 정렬 */
+            background-color: rgb(205, 205, 205); /* 배경색 설정 */
+        }
+        
+
+        Header {
+            justify-content: center; /* 수평 중앙 정렬 */
+            text-align: center; /* 수직 중앙 정렬 */
+            color: 'white';
+            background-color: 'black';
+            height: 90;
+            margin: 0;
+        }
+
+        Footer {
+            justify-content: center; /* 수평 중앙 정렬 */
+            text-align: center; /* 수직 중앙 정렬 */
+            color: 'white';
+            background-color: 'black';
+            height: 90;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // React 객체 : 훅과 함수형 컴포넌트를 만드는데 필요한 메서드들을 가지고 있음
+        // useState로 함수형 컴포넌트의 상태를 관리할 수 있도록 함
+        const { useState } = React;
+
+        // 최종 실행 함수형 컴포넌트
+        function App() {
+
+            // 체크 리스트
+            const [contents, setContents] = useState([
+                { id: 1, content: '오늘의 할일 목록' },
+                { id: 2, content: '새로운 할일' }
+            ]);
+
+            // [현재 상태를 나타내는 값, 상태를 변경하는 함수] = 초기값(default)
+            const [inputContent, setInputContent] = useState('');
+            const [nextId, setNextId] = useState(3);
+
+
+            // 이벤트 핸들러 : 특정 이벤트가 발생했을 때 실행되는 함수(이벤트 감지, 이벤트에 반응)
+
+            // e : 이벤트 객체(이벤트 핸들러가 호출될 때 자동으로 전달되는 매개변수,
+            //                이벤트에 대한 다양한 정보를 가지고 있다.)
+            // e.target: 이벤트가 발생한 DOM요소를 참조
+            // e.target.value: 그 요소의 현재 속성 값을 가져온다.
+            const onChangeHandler = e => setInputText(e.target.value);
+
+            // 버튼 클릭(이벤트)가 발생했을 때 호출되는 함수
+            const onClickHandler = () => {
+
+                // concat : contents(배열)에 새로운 요소를 추가해서 반환
+                const changedContent = contents.concat({
+                    id: nextId,
+                    content: inputContent
+                });
+
+                setNextId(nextId + 1);
+                setInputContent('');
+            }
+
+            const contentList = contents.map(content => <li key={content.id}>{content.content}</li>);
+
+
+
+            return (
+                <> {/*<>...</>는 React에서 여러 요소를 그룹화할 때 사용한다.*/}
+                    <div class="Header"
+                        style={{ color: 'white', backgroundColor: 'black', height: 90 }}>
+                        <h1>오늘의 할일! {new Date().toLocaleDateString()}</h1>
+                    </div>
+
+                    <input onChange={onChangeHandler} value={inputContent} />
+                    <button onClick={onClickHandler}>추가</button>
+                    <ul>
+                        {contentList}
+                    </ul>
+
+                    <div class="Footer"
+                        style={{ color: 'white', backgroundColor: 'black', height: 90 }}>
+                        <p>Copyright 2022, team-greedy all rights reserved.</p>
+                    </div>
+                </>
+
+
+            );
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    </script>
+</body>
+
+</html>
+
+23일 융합 팀 정하기
+27일 기획 발표
+9/27 최종 기획발표
+
+- 9/2 백엔드 8월 프로젝트
+    진행 상황 발표: 8/26, 9/9
+    최종 발표: 9/30로 변경(게더 타운으로 공개)
+
+- 9/3 ~ 10/? 9월 프로젝트 :
+    8/26 9월 프로젝트 팀 편성, 8/30 9월 프로젝트 기획 발표, 9월 26일 프로젝트 발표
+
+- 8/23 ~ 9/27 1차 융합 프로젝트:
+    8/22 세미 융합 프로젝트 팀 편성, 8/27 세미 융합 기획 발표, 9/27 세미 융합 플젝 발표 (전력의 20%를 사용)
+
+- 9/30 ~ 11/? 2차 융합 프로젝트:
+    팀 편성(전력의 50%를 사용)
+
+중요도 8월>9월> 2차 융합> 세미 융합

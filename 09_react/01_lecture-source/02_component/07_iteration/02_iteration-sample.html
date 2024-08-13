@@ -11,29 +11,34 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-
+        // 컴포넌트의 동적 데이터를 관리하는 state(상태)를 관리하는 훅 선언
         const {useState} = React;
 
         function App() {
-
+            // 내부에 기능을 작성하고 return 으로 결과물 보여주기
             const [names, setNames] = useState([
                 {id: 1, name: '홍길동'},
                 {id: 2, name: '유관순'},
                 {id: 3, name: '이순신'}
             ]);
+
             const [inputText, setInputText] = useState('');
             const [nextId, setNextId] = useState(4);
 
             const onChangeHandler = e => setInputText(e.target.value);
+            
             const onClickHandler = () => {
+                
                 const changedNames = names.concat({
                     id: nextId,
                     name: inputText
                 });
+
                 setNextId(nextId + 1);
                 setNames(changedNames);
                 setInputText('');
             }
+
             const onRemove = id => {
                 const changedNames = names.filter(name => name.id !== id);
                 setNames(changedNames);
