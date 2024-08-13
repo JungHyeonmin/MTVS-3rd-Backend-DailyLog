@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // const user = {
+        //     name: '홍길동',
+        //     age: 20,
+        //     phone: '010-1234-9483',
+        //     email: '2ee42a45@gmail',
+        // };
+
+        const name = "홍길동";
+        const age = 20;
+        const phone = "010-1234-9483";
+        const email = "2ee42a45@gmail";
+
+        const user = {
+            name,
+            age,
+            phone,
+            email
+        };
+
+        function NameCard() {
+            return <h3 style={{color:'red'}}> {user.name}</h3>
+        }
+
+        function AgeCard() {
+            return <h3 style={{backgroundColor:'yellow'}}> {user.age}</h3>
+        }
+
+        function PhoneCard() {
+            return <h3 style={{color:'red'}}> {user.phone}</h3>
+        }
+
+        function EmailCard() {
+            return <h3 style={{color:'red'}}> {user.email}</h3>
+        }
+
+        function UserInfo() {
+            return (
+                <div style={{ width: 300, border: '1px solid black' }}>
+                    <NameCard />
+                    <AgeCard />
+                    <PhoneCard />
+                    <EmailCard />
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<UserInfo />);
+
+    </script>
+</body>
+
+</html>

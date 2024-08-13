@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class EventComponent extends React.Component {
+        state = {
+          message: "",
+        };
+
+        render() {
+          return (
+            <>
+              <h1>이벤트 핸들링</h1>
+              <input
+                type="text"
+                name="message"
+                placeholder="텍스트를 입력해주세요"
+                onChange={() => {
+                  this.setState({
+                    message: e.target.value,
+                  });
+                }}
+              />
+              <button
+                onClick={() => {
+                  alert(`${this.state.message} 지워짐!`);
+                  this.setState({
+                    message: "",
+                  });
+                }}
+              >
+                확인
+              </button>
+            </>
+          );
+        }
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <EventComponent />
+      );
+    </script>
+  </body>
+</html>

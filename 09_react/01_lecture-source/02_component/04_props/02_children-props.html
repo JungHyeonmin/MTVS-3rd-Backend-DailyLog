@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 리액트 컴포넌트를 사용할 때 태크 사이에 내용을 작성하면
+        // 해당 내용을 props의 children 속성에서 관리한다.
+
+        function ChildNodePrinter(props) {
+
+            return (
+                <>
+                    <h1>자식 노드가 가지고 있는 값은?</h1>
+                    <h3>children: <font style={{ color: 'orangered' }}>{props.children}</font></h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render([
+            <ChildNodePrinter>텍스트 노드</ChildNodePrinter>,
+            <ChildNodePrinter><div>텍스트 노드</div></ChildNodePrinter>,
+            <ChildNodePrinter><div>1</div><div>2</div><div>3</div><div>4</div></ChildNodePrinter>
+        ]);
+        
+
+    </script>
+</body>
+
+</html>

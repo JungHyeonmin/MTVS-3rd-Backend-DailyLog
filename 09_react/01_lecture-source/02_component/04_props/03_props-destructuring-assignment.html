@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function PropsPrinter({name, children}) {
+
+            // const {name, children} = props;
+
+            return (
+                <>
+                    <h1>제 이름은 {props.name}입니다.</h1>
+                    <h3>제가 가지고 있는 children은 {props.children}입니다.</h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <PropsPrinter name="홍길동">텍스트 노드</PropsPrinter>
+        );
+
+    </script>
+</body>
+
+</html>

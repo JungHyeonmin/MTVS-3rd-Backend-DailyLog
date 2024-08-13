@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 함수형 컴포넌트
+        // 함수의 반환값으로 ReactElement만 정의해서 반환한다.
+        // 함수형 컴포넌트 작성 시 유의사항은 앞 글자를 대문자로 정의해야 한다는 것이다.
+        // 단점은 state와 라이프사이클 API 사용이 불가능하다는 것이다.
+        // 이를 보완하고자 v16.8부터 hooks를 제공하며 이 문제가 해결되었다.
+
+        function Title(){
+            return(
+                <h1>function  Component</h1>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Title/>);
+
+    </script>
+</body>
+
+</html>

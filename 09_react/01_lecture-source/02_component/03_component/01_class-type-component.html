@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+        react를 배우는 이유
+        1. 리엑트로 부업 가능
+        2. 배우는 김에 더 여려운거 배우자(컴포넌트 개념을 잘 잡으면 뷰도 쉽다.)
+
+        클래스형 컴포넌트
+        ES6에서 제공되는 클래스 문법을 이용해 랜더링 될 컴포넌트를 정의하는 방법을 제공한다.
+        render() 함수는 반드시 작성되어야 하며, 반환값으로 랜더링될 리액트 엘리먼트를 정의한다.
+        (일반적으로는 JSX 사용함)
+        JSX만으로도 리액트 엘리먼트를 정의할 수 있지만, 클래스형 혹은 함수형으로 컴ㄴ포넌트를 만들면
+        중복되는 엘리먼트를 추상화하여 컴포넌트로 작성하고 이를 재사용 함녀서 생상성과 유지보수성이 
+        증가하게 된다. 이것이리액트가 추구하는 한 가지 방향이다.
+        */
+
+
+        // 클래스형 컴포넌트
+        // 컴포넌트의 첫글자는 대문자로!
+        class Tilte extends React.Component{
+            render(){
+                return (  // 함수의 반환값으로 ReactElement만 정의해서 반환한다.
+                    <h1>Class Component</h1>
+                );
+            }
+        }
+
+        ReactDOM.createRoot(document.getElementById('rro')).render(<Title/>);
+
+    </script>
+</body>
+
+</html>

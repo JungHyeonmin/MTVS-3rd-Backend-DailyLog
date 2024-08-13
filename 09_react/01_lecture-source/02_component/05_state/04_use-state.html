@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        /**
+         * props vs state(상태)
+         * 공통점:
+         *          Component에서 사용되는 값
+         *
+         * 차이점:
+         *          props: 컴포넌트 외부에서 컴포넌트로 전달되는 값
+         *          state: 컴포넌트 내부에서 정의되는 값
+         *
+         *          props: 변경하지 않고 읽기 전용(read only)으로 사용되는 값
+         *          state: 변경이 될 값
+         */
+
+        // 함수형 컴포넌트는 기본적으로 state를 사용할 수 없다.
+        // 리액트 16.8버전 이후 useState라는 함수를 이용하여 함수형 컴포넌트에서도
+        // state를 관리하고 사용할 수 있게 되었다.
+
+        const { useState } = React; // 전역으로 선언, 바로 useState로 사용할 수 있다.
+
+        function Say() {
+
+            const [message, setMessage] = useState('기본 상태');
+            const [color, setColor] = useState('black');
+            const [backgroundColor, setBackgroundColor] = useState('white');
+
+            const onClickEnter = () => setMessage('안녕하세요!');
+            const onClickLeave = () => setMessage('안녕히 가세요!');
+
+            console.log('state 변경됨!');
+
+            return (
+                <>
+                    <h1 style={{ color, backgroundColor }}>{message}</h1>
+                    <div>
+                        <button onClick={onClickEnter}>입장</button>
+                        <button onClick={onClickLeave}>퇴장</button>
+                    </div>
+                    <div>
+                        <button onClick={() => setColor('red')}>빨간색</button>
+                        <button onClick={() => setColor('purple')}>보라색</button>
+                        <button onClick={() => setColor('green')}>초록색</button>
+                    </div>
+                    <div>
+                        <button onClick={() => setBackgroundColor('white')}>기본 배경</button>
+                        <button onClick={() => setBackgroundColor('black')}>기본 배경</button>
+                    </div>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Say />)
+
+
+
+
+    </script>
+</body>
+
+</html>

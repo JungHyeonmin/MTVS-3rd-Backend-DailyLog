@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--이 세 줄은 항상 들고 다녀라~!-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        const answer = parseInt(prompt('리액트가 재미있으신가요?\n1. 재미있다\n2. 어렵다.'));
+
+        // 1. 삼항 연산자1
+        // console.log(answer);
+
+        // const positiveElement = <h1>앞으로 점점 더 재미있어 질거에요~</h1>
+        // const negetiveElement = <h1>하다 보면 익숙해집니다.</h1>
+
+        // root.render(
+        //     (answer === 1) ? positiveElement : negetiveElement
+        // );
+
+
+        // 2. if else
+        // let element;
+        // if (answer === 1) {
+        //     element = <h1>앞으로 점점 더 재미있어 질거에요~</h1>
+        // } else {
+        //     element = <h1>하다 보면 익숙해집니다.</h1>
+        // }
+        // root.render(element);
+
+
+        // 3. 삼항 연산자2
+        // const element = (answer === 1) ? (
+        //     <h1>앞으로 점점 더 재미있어 질거에요~</h1>
+        // ) : (
+        //     <h1>하다 보면 익숙해집니다.</h1>
+        // );
+
+
+        // 4. 조건부 렌더링
+        // const element = answer === 1&& <h1>앞으로 점점 더 재미있어 질거에요~</h1>
+        // console.log(element);
+
+        // 주의사항
+        // false 조건을 가지고 랜더링을 하는 경우 조건에 일치하지 않으면 랜더링 되는 요소가 없지만
+        // 0은 Falsy한 값임에도 조건부 엘리먼트를 생성하게 되면 0을 반환한다.
+        // Falsy값 : null, undefinde, 0, NaN - 랜더링이 되기때문에 논리값으로 변형하고 사용해야 한다.
+        const number=0;
+        console.log(!!number);
+        const element = !!number && <h1>Truhy일 때 나오는 태그</h1>
+
+        root.render(element);
+        // ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+    </script>
+</body>
+
+</html>
