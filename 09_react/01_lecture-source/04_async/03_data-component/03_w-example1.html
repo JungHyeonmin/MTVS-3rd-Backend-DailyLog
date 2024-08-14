@@ -16,8 +16,6 @@
     <div id="root"></div>
     <script type="text/babel">
 
-        // 날씨 + 임티
-
         // https://home.openweathermap.org/api_keys
         const API_KEY = '639066b19ed4b3549bfa23d9ac071d47';
         const { useEffect, useState } = React;
@@ -28,6 +26,8 @@
             const [cityName, setCityName] = useState('');
             const [weather, setWeather] = useState({});
             const [wind, setWind] = useState({});
+
+
 
             function getPosition() {
                 // 위도, 경도 좌표 => 오래 걸려서 비동기로 구현
@@ -50,6 +50,7 @@
             }
 
 
+            // 오래 걸리는 위치 longtitude, latitude, 날씨 비동기로 조회
             useEffect(() => {
                 async function setWeatherState() {
 
@@ -64,6 +65,8 @@
                 []
             );
 
+
+
             return (
                 <>
                     <h3>현재 위치</h3>
@@ -71,6 +74,7 @@
                     <h4>{`조회 도시 : ${cityName} `}</h4>
                     <h4>{`날씨 : ${weather.main} 날씨 설명 : ${weather.description}`}</h4>
                     <h4>{`풍향 : ${wind.deg}도 풍속 풍향 : ${wind.speed}`}</h4>
+                    
 
                 </>
             );
@@ -81,7 +85,8 @@
             return (
                 <>
                     <h1>오늘의 날씨</h1>
-                    <Weather />
+                    {/*함수형 컴포넌트 - 날씨 조회*/}
+                    <Weather /> 
                 </>
             );
         }

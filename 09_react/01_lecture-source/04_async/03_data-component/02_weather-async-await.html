@@ -22,11 +22,41 @@
 
         function Weather() {
 
-            const [position, setPosition] = useState({});
-            const [cityName, setCityName] = useState('');
-            const [weather, setWeather] = useState({});
-            const [wind, setWind] = useState({});
+            // 날씨
+            const [position, setPosition] = useState({});   // 위치
+            const [cityName, setCityName] = useState('');   // 도시 이름
+            const [weather, setWeather] = useState({});     // 날씨     
+            const [wind, setWind] = useState({});           // 바람
 
+            // 이모지
+            const [emojis, setEmojis] = useState({});
+            const [emojiId, setEmojiId] = useState('');
+            const [emojiUrl, setEmojiUrl] = useState('');
+
+            // 날씨에 따라서 이모지 결정
+            function weatherEmoji() {
+                // 날씨 값
+                const weaterE = `${weather.main}`;
+                // 이모지 초기값
+                const emojiName = '';
+
+                // 이모지 결정
+                switch (weaterE) {
+                    case 'Clear': emojiName = 'sunny'; break;
+                    case 'Rain': emojiName = 'umbrella'; break;
+                    case 'Thunderstom': emojiName = 'cloud_with_lightning_and_rain'; break;
+                    case 'Drizzle': emojiName = 'cloud_with_rain'; break;
+                    case 'Snow': emojiName = 'snowman'; break;
+                    case 'Clouds': emojiName = 'cloud'; break;
+                    case 'Atmosphere': emojiName = 'airplane'; break;
+                }
+
+                // 이모지를 이용해서 찾기
+
+            }
+
+
+            // 위치 찾기(위도, 경도)
             function getPosition() {
                 // 위도, 경도 좌표 => 오래 걸려서 비동기로 구현
                 return new Promise((resolve, reject) => {
@@ -41,6 +71,8 @@
                 });
             }
 
+
+
             function getWeather(coords) {
                 return fetch(
                     `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=${API_KEY}`)
@@ -48,6 +80,7 @@
             }
 
 
+            // 오래 걸리는 위치 longtitude, latitude, 날씨 비동기로 조회
             useEffect(() => {
                 async function setWeatherState() {
 
@@ -62,13 +95,18 @@
                 []
             );
 
+
+
             return (
                 <>
                     <h3>현재 위치</h3>
                     <h4>{`경도 : ${position.longitude} 위도 : ${position.latitude}`}</h4>
                     <h4>{`조회 도시 : ${cityName} `}</h4>
-                    <h4>{`날씨 : ${weather.main} 날씨 설명 : ${weather.description}`}</h4>
+                    <h4 onChange={handleChange}>{`날씨 : ${weather.main} 날씨 설명 : ${weather.description}`}</h4>
                     <h4>{`풍향 : ${wind.deg}도 풍속 풍향 : ${wind.speed}`}</h4>
+                    <div>
+                        <img src={emojiUrl} alt="Emoji" />
+                    </div>
 
                 </>
             );
@@ -79,6 +117,7 @@
             return (
                 <>
                     <h1>오늘의 날씨</h1>
+                    {/*함수형 컴포넌트 - 날씨 조회*/}
                     <Weather />
                 </>
             );

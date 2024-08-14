@@ -27,10 +27,11 @@
 
 
             const [emojis, setEmojis] = useState({}); // 이모지들을 객체 형태로 저장
-            const [EmojiId, setEmojiId] = useState(''); // 원하는 이모지의 id를 저장
+            const [emojiId, setEmojiId] = useState(''); // 원하는 이모지의 id를 저장
             const [emojiUrl, setEmojiUrl] = useState(''); // 원하는 이모지의 url을 저장
 
-            // useEffect : 조회같이 오래걸리는 작업에서 비동기로 사용하기 위한 훅
+
+            // useEffect : 조회같이 오래걸리는 작업에서 비동기로 사용하기 위한 훅.⭐⭐⭐⭐
             useEffect(() => {
                 async function fetchData() {
                     // 이모지 전체 목록을 가져와서 Promise 형태로 저장
@@ -43,16 +44,17 @@
             );
 
 
-            // EmojiId 업데이트 : 찾고자 하는 이모지 아이디 추가
+
+            // emojiId 업데이트 : 찾고자 하는 이모지 아이디 추가⭐⭐⭐⭐
             const handleChange = (e) => {
                 setEmojiId(e.target.value);
             }
 
 
-            // onClickHandler는 (매개변수)를 callAPI로 전달하여 결과값을 받는다.
+            // onClickHandler는 (매개변수)를 callAPI로 전달하여 결과값을 받는다.⭐⭐⭐⭐
             const onClickHandler = () => {
 
-                const selectedEmojiUrl = emojis[EmojiId];
+                const selectedEmojiUrl = emojis[emojiId];
                 if (selectedEmojiUrl) {
                     setEmojiUrl(selectedEmojiUrl);
                 } else {
@@ -65,7 +67,7 @@
             return (
                 <>
                     {/* value={EmojiId}를 onChange={handleChange}메서드로 상태를 업데이트 한다.*/}
-                    <input type="text" value={EmojiId} onChange={handleChange} />
+                    <input type="text" value={emojiId} onChange={handleChange} />
 
                     <button onClick={onClickHandler}>검색</button>
                     {/*결과 반영*/}
