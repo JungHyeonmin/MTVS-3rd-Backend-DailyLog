@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 컴포넌트 업데이트 기준은 크게 4가지로 나뉜다.
+        // 1. props 변경
+        // 2. state 변경
+        // 3. 부모 컴포넌트가 리랜더링(얘가 중요)
+        // 4. this.forceUpdate로 강제 랜더링(render 함수 내에서는 사용하지 않으며, 사실상 거의 안씀)
+
+        // getDerivedStateFromProps -> shoudComoponentUpdate -> render
+        // -> getSnapShotBefore -> componentDidUpdate
+
+        class TimePrinter extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    now: new Date().toLocaleTimeString()
+                }
+            }
+
+            static getDerivedStateFromProps(nextProps, newtState) {
+
+                console.log('getDerivedStateFromProps');
+
+                return null;
+            }
+
+            // 컴포넌트가 리랜더링을 할 것인지 결정하는 메서드
+            shouldComponentUpdate(nextProps, nextState) {
+                console.log('shouldComponentUpdate');
+
+                // 반드시 boolean을 반환해야 하며, false를 반환할 시 여기서 중단
+                return true;
+            }
+
+            render() {
+                console.log('render');
+
+                return (
+                    <>
+                        <button
+                            onClick={() => this.setState({ now: new Date().toLocaleTimeString() })}
+                        >
+                            현재 시간 확인하기
+                        </button>
+                        <h1>{this.state.now}</h1>
+                    </>
+                );
+            }
+            // 컴포넌트의 변화를 실제 DOM에 반영하기 직전에 호출하는 메서드
+            getSnapShotBeforeUpdate(preProps, prevState) {
+                console.log('getSnapShotBeforeUpdate');
+
+                return {
+                    message: '스냅샷 입니다.'
+                }
+            }
+
+            // 후
+            ComponentDidUpdate(preProps, preState, snapShot) {
+                console.log('componentDidUpdate');
+                console.log(snapShot);
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<TimePrinter />)
+    </script>
+</body>
+
+</html>

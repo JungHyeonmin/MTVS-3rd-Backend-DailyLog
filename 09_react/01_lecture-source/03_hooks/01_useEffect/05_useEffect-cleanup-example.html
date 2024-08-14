@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!--마운트 포인트 :
+    React 애플리케이션이 실제로 DOM에 삽입되는 위치를 지정하는 HTML 요소-->
+    <div id="root"></div> 
+    <script type="text/babel">
+
+        // React 훅 중 'useState', 'useEffect'를 가져온다.
+        // useState : 컴포넌트의 상태를 관리할 수 있게 해주는 훅
+        // useEffect : 컴포넌트의 생명주기에 맞춰 부수 효과를 실행할 수 있게 해주는 훅
+        const { useState, useEffect } = React;
+
+        function Timer() {
+
+            // 컴포넌트가 랜더링될 때마다 실행되는 훅
+            useEffect(() => {
+                console.log('타이머가 시작합니다.')
+                // setInterval() : 1초마다 현재 시각을 콘솔에 출력, JS 내장 메서드
+                const timer = setInterval(() => {
+                    console.log(new Date().toLocaleTimeString());
+                }, 1000);
+
+                return () => {
+                    // clearInterval : 컴포넌트가 언마운트될 때 타이머를 정리한다. JS 내장 메서드
+                    clearInterval(timer);
+                    console.log('타이머가 종료됩니다.');
+                };
+            });
+
+            return <h1>타이머를  시작합니다.</h1>;
+        }
+
+        function App() {
+
+            const [isTrue, setIsTrue] = useState(false);
+
+            return (
+                <>
+                    <button onClick={() => setIsTrue(!isTrue)}>타이머 토글</button>
+                    {isTrue && <Timer />}
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+    </script>
+</body>
+
+</html>

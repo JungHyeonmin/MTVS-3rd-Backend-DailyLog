@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!--마운트 포인트 :
+    React 애플리케이션이 실제로 DOM에 삽입되는 위치를 지정하는 HTML 요소-->
+    <div id="root"></div>
+    <div id="root"></div>
+    <script type="text/babel">
+        // React 훅 중 'useState', 'useEffect'를 가져온다.
+        // useState : 컴포넌트의 상태를 관리할 수 있게 해주는 훅
+        // useEffect : 컴포넌트의 생명주기에 맞춰 부수 효과를 실행할 수 있게 해주는 훅
+        const { useState, useEffect } = React;
+
+        function GetUserInput() {
+            const [initialInput, setInitialInput] = useState("");
+            const [reInput, setReInput] = useState("");
+            const [startTime, setStartTime] = useState(null);
+
+            useEffect(() => {
+                const userInput = prompt("문자열을 입력해주세요");
+                if (userInput !== null) {
+                    setInitialInput(userInput);
+                    setStartTime(new Date());
+                } else {
+                    setInitialInput("입력이 취소되었습니다.");
+                }
+            }, []);
+
+            const handleKeyDown = (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    if (reInput === initialInput) {
+                        const endTime = new Date();
+                        const elapsedMilliseconds = endTime - startTime;
+                        alert(`${elapsedMilliseconds / 1000}초`);
+                        setReInput("");
+                    }
+                }
+            };
+
+            const handleChange = (event) => {
+                setReInput(event.target.value);
+            };
+
+            return (
+                <div>
+                    <p>{initialInput}</p>
+                    <input
+                        type="text"
+                        value={reInput}
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDown}
+                        placeholder="여기에 입력"
+                    />
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(
+            <GetUserInput />
+        );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // useEffect는 기본적으로 마운트 된 시점과 업데이트 된 시점 두 가지 모두 동작한다.
+
+        const { useState, useEffect } = React;
+
+        function TimePrinter() {
+            const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+            useEffect(
+                () => console.log('마운트 시점에만 동작함...'),
+                [] // 의존성 배열 - 마운트 시점에만 동작하고 싶다면 빈배열을 두면 된다.
+            );
+
+            return (
+                <>
+                    <button
+                        onClick={() => setTime(new Date().toLocaleTiemString())}
+                    >
+                        현재 시간 확인하기
+                    </button>
+                    <h1>{time}</h1>
+                </>
+
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TimePrinter/>)
+    </script>
+</body>
+
+</html>

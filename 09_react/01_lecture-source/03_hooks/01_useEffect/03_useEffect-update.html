@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useEffect } = React;
+
+        function LoginForm() {
+
+            const [user, setUser] = useEffect({
+                userName: '',
+                password: '',
+            });
+
+            const onChangeHandler = e => {
+                setUser({
+                    ...user,
+                    [e.target.name]: e.target.value
+                });
+            }
+
+            useEffect(
+                () => { console.log('userName update...') },
+                [user.username] // 동작하기 전의 변경 전 값과 변경 후 값을 비교하여 일치하면 건너뜀
+            );
+
+            useEffect(
+                () => { console.log('password update...') },
+                [user.password]
+            )
+
+            return (
+                <>
+                    <label>userName: </label>
+                    <input type="text" name="userName" onChange={onChangeHandler} />
+                    <br />
+
+                    <label>password: </label>
+                    <input type="password" name="password" onChange={onChangeHandler} />
+
+                    <h3>userName: {user.userName}</h3>
+                    <h3>password: {user.passwords}</h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<LoginForm />)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        class Greeting extends React.Component {
+            render() {
+                return <h1>Hello World</h1>;
+            }
+
+            // 컴포넌트가 웹 브라우저 상에서 사라지기 직전에 호출하는 메서드
+            componentWillUnmount() {
+                // componentDidMount 시점에 등록한 이벤트, 타이머, 직접 생성한 DOM 등을
+                // 여기서 다 제거하는 작업을 한다.
+                console.log('componentWillUnmount');
+            }
+        }
+
+        root.render(<Greeting/>);
+
+        window.setTimeout(
+            () => {
+                root.render(null);
+            },
+            5000
+        );
+    </script>
+</body>
+
+</html>

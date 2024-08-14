@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // mount 시
+        // constructor -> getDerivedStateFromProps -> render -> componentDidMount 순으로 호출
+
+        class Greeting extends React.Component {
+
+            // 1. 컴포넌트를 새로 만들 때마다 호출되는 클래스 생성자 메서드
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    text: '초기값'
+                };
+
+                console.log('constructor')
+            }
+
+            // 2. props에 있는 값을 state에 넣을 때 사용하는 메서드이다.(마운트와 없데이트 시 호출)
+            static getDerivedStateFromProps(nextProps, nextState) {
+
+                console.log('getDerivedStateFromProps');
+
+                return null; // state를 변경할 필요가 없다면 null을 반환한다.
+            }
+
+            // 3. 리액트 엘리먼트를 가상돔으로 구성하고 실제 렌더트리까지 구성하는 시점에 호출되는 메서드
+            render() {
+
+                // 랜더링 될 컴포넌트의 형태를 리엑트 엘리먼트 컴포넌트로 반환한다.
+                // 라이프사이클 메서드 중 유일한 필수 메서드이다.
+
+                // 주의사항
+                // 1. 이 메서드 내에서는 이벤트 설정이 아닌 곳에서 setState를 사용하면 안된다.
+                // this.setState({
+                //     test:'수정'
+                // });
+
+                // 2. 브라우저의 DOM에 접근해서도 안된다.
+                console.log('render');
+
+                return (
+                    <>
+                        <h1>현재 상태 값, {this.state.text}</h1>
+                    </>
+                );
+            }
+
+            // 컴포넌트가 웹 브라우저 상에 나타난 후 호출되는 메서드이다.
+            componentDidMount() {
+
+                // 컴포넌트를 다 만든 후 첫 랜더링을 마치고 나면 호출이 된다.
+                // 이벤트 등록, setTimeout, setInterval, 네트워크 요청 같은 비동기 작업을 처리할 때
+                // 많이 사용한다.
+
+                console.log('componentDidMount');
+            }
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Greeting />);
+
+    </script>
+</body>
+
+</html>

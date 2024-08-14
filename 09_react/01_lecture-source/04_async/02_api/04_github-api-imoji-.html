@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState, useEffect } = React;
+
+        // axios: fetch 시 편의성 제공 , 자주 사용한다.(회사마다 사용여부가 다름)
+        function callAPI() {
+            return axios.get("https://api.github.com/emojis")
+                .then(res => res.data); // 순수 object 형태로 보기 좋게 반환한다.
+        }
+
+        function App() {
+
+
+            const [emojis, setEmojis] = useState({}); // 이모지들을 객체 형태로 저장
+            const [EmojiId, setEmojiId] = useState(''); // 원하는 이모지의 id를 저장
+            const [emojiUrl, setEmojiUrl] = useState(''); // 원하는 이모지의 url을 저장
+
+            // useEffect : 조회같이 오래걸리는 작업에서 비동기로 사용하기 위한 훅
+            useEffect(() => {
+                async function fetchData() {
+                    // 이모지 전체 목록을 가져와서 Promise 형태로 저장
+                    const emojiData = await callAPI();
+                    setEmojis(emojiData);
+                }
+                fetchData();
+            },
+                []
+            );
+
+
+            // EmojiId 업데이트 : 찾고자 하는 이모지 아이디 추가
+            const handleChange = (e) => {
+                setEmojiId(e.target.value);
+            }
+
+
+            // onClickHandler는 (매개변수)를 callAPI로 전달하여 결과값을 받는다.
+            const onClickHandler = () => {
+
+                const selectedEmojiUrl = emojis[EmojiId];
+                if (selectedEmojiUrl) {
+                    setEmojiUrl(selectedEmojiUrl);
+                } else {
+                    alert("잘못된 이모지 키입니다.");
+                    setEmojiUrl("");
+                }
+            };
+
+
+            return (
+                <>
+                    {/* value={EmojiId}를 onChange={handleChange}메서드로 상태를 업데이트 한다.*/}
+                    <input type="text" value={EmojiId} onChange={handleChange} />
+
+                    <button onClick={onClickHandler}>검색</button>
+                    {/*결과 반영*/}
+                    {
+                        emojiUrl &&
+                        <div>
+                            <img src={emojiUrl} alt="Emoji" />
+                        </div>
+                    }
+                </>
+            );
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    </script>
+</body>
+
+</html>

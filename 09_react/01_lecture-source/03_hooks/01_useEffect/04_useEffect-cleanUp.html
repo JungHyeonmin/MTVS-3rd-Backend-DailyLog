@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 정리 함수는 class component의 componentWillUnmount에서 하는 역할과 동일하다.
+
+        // 이전 effect가 남아있는 상태에서 새로운 effect가 발생하게 되면
+        // 마운트가 해제되고 나서도 메모리 누수나 충돌이 발생할 가능성이 있다.
+
+        const { useState, useEffect } = React;
+
+        function Counter() {
+            const [count, setCount] = useState(0);
+
+            useEffect(
+                () => {
+                    console.log('useEffect');
+                    return () => {
+                        console.log('clean-up...');
+                    }
+                }
+            );
+
+            return (
+                <>
+                    <h1>count: {count}</h1>
+                    <button onClick={() => setCount(count + 1)}> + 1</button>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter />);
+
+    </script>
+</body>
+
+</html>

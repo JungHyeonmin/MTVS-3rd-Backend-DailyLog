@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    async function callAPI() {
+      try {
+        const response = await axios.get("https://api.github.com/emojis");
+        return response.data;
+      } catch (error) {
+        console.error("API 요청 실패:", error);
+        return {};
+      }
+    }
+
+    function App() {
+      const [emojis, setEmojis] = useState({});
+      const [emojiKey, setEmojiKey] = useState("");
+      const [selectedEmojiUrl, setSelectedEmojiUrl] = useState("");
+
+      // 조회같이 오래걸리는 작업에서 비동기로 사용하기 위한 훅
+      useEffect(() => {
+        async function fetchData() {
+          const emojiData = await callAPI();
+          setEmojis(emojiData);
+        }
+
+        fetchData();
+      }, []);
+
+      const onClickHandler = () => {
+        const selectedEmojiUrl = emojis[emojiKey];
+        if (selectedEmojiUrl) {
+          setSelectedEmojiUrl(selectedEmojiUrl);
+        } else {
+          alert("잘못된 이모지 키입니다.");
+          setSelectedEmojiUrl("");
+        }
+      };
+
+      return (
+        <div>
+          <input
+            type="text"
+            value={emojiKey}
+            onChange={(e) => setEmojiKey(e.target.value)}
+            placeholder="이모지 키 입력"
+          />
+          <button onClick={onClickHandler}>이모지 가져오기</button>
+          {selectedEmojiUrl && (
+            <div>
+              <img src={selectedEmojiUrl} alt="Emoji" />
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+
+</html>

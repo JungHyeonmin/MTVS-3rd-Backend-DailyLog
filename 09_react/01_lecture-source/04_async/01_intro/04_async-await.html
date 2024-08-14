@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function increase(number) {
+
+            return new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        const result = number + 10;
+
+                        if (result > 50) {
+                            return reject(new Error('Number Too Big...'));
+                        }
+                        resolve(result);
+                    }, 1000
+                );
+            });
+        }
+
+        // async : 함수 앞에 붙인다.
+        async function run() {
+            try {
+                // await : 비동기 작업을 수행한 결과값을 리턴
+                let result = await increase(0);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+            } catch (e) {
+                console.log(e, '가 발생했네');
+            }
+        }
+
+        run();
+    </script>
+</body>
+
+</html>

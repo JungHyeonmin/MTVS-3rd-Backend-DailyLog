@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // axios: fetch 시 편의성 제공 , 자주 사용한다.(회사마다 사요여부가 다름)
+        function callAPI(){
+            axios.get('https://jsonplaceholder.typicode.com/users')
+            .then(res => console.log(res)); // 순수 object 형태로 보기 좋게 반환한다.
+        }
+
+        function App() {
+            // onClickHandler는 (매개변수)를 callAPI로 전달하여 결과값을 받는다.
+            const onClickHandler = () => callAPI();
+
+            return <button
+                onClick={onClickHandler}>API 요청</button> // onClick(버튼을 누르면) onClickHandler 메서드 호출
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    </script>
+</body>
+
+</html>
+

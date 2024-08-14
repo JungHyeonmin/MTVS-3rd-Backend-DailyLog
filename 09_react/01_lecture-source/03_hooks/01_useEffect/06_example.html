@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 1. 시작 시 alert창으로 값 입력받기
+        // 1-1. alert창에서 입력한 값과 똑같은 값을 출력하고 입력받기
+        // 1-2. alert창에서 값을 입력받은 순간부터 ms단위로 시간 세기
+        // 2. alert 창에서 입력받은 값과 같은 값 입력 시 alert로 시간 출력
+        // 2-1. 틀릴시 아무런 동작 안함
+
+        const { useState, useEffact } = React;
+
+        function App() {
+
+            const [isTure, setIsTure] = useState(false);
+        }
+
+
+        function Timer() {
+            useEffact(
+                () => {
+                    const timer = setInterval(
+                        () => {
+                            console.log(new Date().toLocaleTimeString())
+                        });
+
+                    return () => {
+                        clearInterval(timer);
+                        // alert창으로 걸린 ms 표시하기
+                    }
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>
+
+const onClickHandler = () => alert('Hello World!');
+
+const element = (
+<>
+    <h1>Event Attribute</h1>
+    <button onClick={onClickHandler}>클릭하세요</button>
+</>
+);
+ReactDOM.createRoot(document.getElementById('root')).render(element);

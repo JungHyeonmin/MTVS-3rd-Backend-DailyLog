@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // promise는 콜백지옥과 같은 코드가 형성되지 않게 비동기 작업을
+        // 순차적으로 처리할 수 있게 하는 방안으로 ES6에서 도입되었다.
+
+        function increase(number) {
+            // 비동기 작업을 promise로 만든다.
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        const result = number + 10;
+
+                        if (result > 50) {
+                            const e = new Error('Number Too Big');
+
+                            return reject(e);
+                        }
+                        resolve(result);
+                    }, 1000
+                );
+            });
+            return promise; // Promise 객체로 반환
+        }
+
+        // console.log(increase(0));
+
+        increase(0).then(number => {
+            console.log(number);
+
+            return increase(number);
+        }).then(number => {
+            console.log(number)
+
+            return increase(number);
+        }).then(number => {
+            console.log(number);
+
+            return increase(number);
+        }).then(number => {
+            console.log(number);
+
+            return increase(number);
+        }).then(number => {
+            console.log(number);
+
+            return increase(number);
+        }).then(number => {
+            return increase(number);
+
+            console.log(number);
+        }).catch(e => {
+            console.log(e, '가 발생했네');
+        }).finally(() => {
+            console.log('finally 실행');
+        })
+    </script>
+</body>
+
+</html>

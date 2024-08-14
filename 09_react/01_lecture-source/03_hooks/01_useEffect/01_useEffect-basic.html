@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useEffect } = React;
+
+        function MessagePrinter({ message }) {
+
+            console.log('랜더링...');
+
+            useEffect(
+                () => {
+                    console.log('랜더링 이후 동작...')
+                }
+            );
+
+            return (
+                <h1>{console.log('렌더링 시 출력')}{message}</h1>
+            );
+            // console.log('랜더링 이후 동작');
+        }
+
+        const message = "안녕하세요";
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<MessagePrinter message={message} />);
+    </script>
+</body>
+
+</html>
