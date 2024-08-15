@@ -20,6 +20,13 @@
         const API_KEY = '639066b19ed4b3549bfa23d9ac071d47';
         const { useEffect, useState } = React;
 
+
+        // 이모지를 객체 배열로 받
+        function callAPI() {
+            return axios.get("https://api.github.com/emojis")
+                .then(res => res.data);
+        }
+
         function Weather() {
 
             // 날씨
@@ -29,31 +36,9 @@
             const [wind, setWind] = useState({});           // 바람
 
             // 이모지
-            const [emojis, setEmojis] = useState({});
-            const [emojiId, setEmojiId] = useState('');
-            const [emojiUrl, setEmojiUrl] = useState('');
-
-            // 날씨에 따라서 이모지 결정
-            function weatherEmoji() {
-                // 날씨 값
-                const weaterE = `${weather.main}`;
-                // 이모지 초기값
-                const emojiName = '';
-
-                // 이모지 결정
-                switch (weaterE) {
-                    case 'Clear': emojiName = 'sunny'; break;
-                    case 'Rain': emojiName = 'umbrella'; break;
-                    case 'Thunderstom': emojiName = 'cloud_with_lightning_and_rain'; break;
-                    case 'Drizzle': emojiName = 'cloud_with_rain'; break;
-                    case 'Snow': emojiName = 'snowman'; break;
-                    case 'Clouds': emojiName = 'cloud'; break;
-                    case 'Atmosphere': emojiName = 'airplane'; break;
-                }
-
-                // 이모지를 이용해서 찾기
-
-            }
+            const [emojis, setEmojis] = useState({}); // 이모지들을 객체 형태로 저장
+            const [emojiId, setEmojiId] = useState(''); // 원하는 이모지의 id를 저장
+            const [emojiUrl, setEmojiUrl] = useState(''); // 원하는 이모지의 url을 저장
 
 
             // 위치 찾기(위도, 경도)
@@ -92,18 +77,53 @@
                 }
                 setWeatherState();
             },
+                [] // 의존성 배열, 컴포넌트가 랜더링된 후 한번만 실행
+            );
+
+            
+            // 이모지 리스트를 비동기로 가져오는 useEffect
+            useEffect(() => {
+                async function fetchData() {
+                    // 이모지 전체 목록을 가져와서 Promise 형태로 저장
+                    const emojiData = await callAPI();
+                    setEmojis(emojiData);
+                }
+                fetchData();
+            },
                 []
             );
 
+            // 날씨에 따라서 이모지 결정
+            function weatherEmoji(weaterMain) {
+                let emojiName='';
+                console.log(weaterMain);
 
+                // 이모지 선택
+                switch (weaterMain) {
+                    case 'Clear': emojiName = 'sunny'; break;
+                    case 'Rain': emojiName = 'umbrella'; break;
+                    case 'Thunderstorm': emojiName = 'cloud_with_lightning_and_rain'; break;
+                    case 'Drizzle': emojiName = 'cloud_with_rain'; break;
+                    case 'Snow': emojiName = 'snowman'; break;
+                    case 'Clouds': emojiName = 'cloud'; break;
+                    case 'Atmosphere': emojiName = 'airplane'; break;
+                    default: emojiName = 'earth_americas'; break;
+                }
+
+                const selectedEmojiUrl = emojis[emojiName];
+                setEmojiUrl(selectedEmojiUrl);
+                
+
+            }
 
             return (
                 <>
                     <h3>현재 위치</h3>
                     <h4>{`경도 : ${position.longitude} 위도 : ${position.latitude}`}</h4>
                     <h4>{`조회 도시 : ${cityName} `}</h4>
-                    <h4 onChange={handleChange}>{`날씨 : ${weather.main} 날씨 설명 : ${weather.description}`}</h4>
+                    <h4>{`날씨 : ${weather.main} 날씨 설명 : ${weather.description}`}</h4>
                     <h4>{`풍향 : ${wind.deg}도 풍속 풍향 : ${wind.speed}`}</h4>
+                    
                     <div>
                         <img src={emojiUrl} alt="Emoji" />
                     </div>

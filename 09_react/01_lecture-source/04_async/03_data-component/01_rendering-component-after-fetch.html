@@ -2,20 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         .item {
-            background: aliceblue;
+            background: powderblue;
+            border: 1px dotted black;
+            width: 350px;
+            display: inline-block;
+            margin: 10px;
         }
     </style>
-
 </head>
 
 <body>
@@ -25,10 +26,11 @@
         const { useEffect, useState } = React;
 
         function Title() {
-            return <h1>회원 목록</h1>;
+            return <h1>회원목록</h1>;
         }
 
         function ItemList() {
+
             const [users, setUsers] = useState([]);
 
             useEffect(
@@ -37,7 +39,7 @@
                         .then(response => response.json())
                         .then(responseUsers => {
                             setUsers(responseUsers);
-                        })
+                        });
                 },
                 []
             );
@@ -56,25 +58,91 @@
                     <h4>{user.name}</h4>
                     <p>
                         id : {user.id}<br />
-                        email: {user.email}<br />
-                        phone: {user.phone}<br />
+                        email : {user.email}<br />
+                        phone : {user.phone}<br />
                     </p>
                 </div>
-            )
+            );
         }
 
         function App() {
-
             return (
                 <>
                     <Title />
                     <ItemList />
                 </>
-            )
+            );
         }
 
-        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
 
 </html>
+
+
+<p>
+    id : {user.}<br />
+</p>
+
+/*  // 포켓몬 정보
+function Pokemonss({ pokemon }) {
+   
+
+    const [pokemonName, setPokemonName] = useState(''); // 포켓몬 이름
+    const [pokemonUrl, setPokemonUrl] = useState('');   // 포켓몬 url
+
+    // 포켓몬url -> id
+    //const [pokemonId, setPokemonId] = useState('');     // 포켓몬 아이디
+    // 포켓몬url -> sprites(이미지 세트) -> front_default
+    // const [pokemonPhoto, setPokemonPhoto] = useState(''); // 포켓몬 사진 url
+
+    // 포켓몬 리스트 가져오기
+    useEffect(() => {
+        // 비동기 함수 선언
+        async function fetchData() {
+
+            const pokemonData = await callAPI();
+
+            setPokemonList(pokemonData);
+
+            setPokemonName(pokemonUrl.name);
+            setPokemonName(pokemonUrl.name);
+        }
+        // 비동기 함수, fetchData()를 호출
+        fetchData();
+    },
+        []
+    );
+
+
+    // 포켓몬 이름 가져오는 메서드
+    function getPokemonName() {
+
+    }
+
+    // 포켓몬 아이디 가져오는 메서드
+    function getPokemonId() {
+
+    }
+
+
+    // 포켓몬 정면 사진 가져오는 메서드
+    function getPokemonPhoto() {
+
+    }
+
+    return (
+        <>
+            <h1>포켓몬 목록</h1>
+            <div calssName="Pokemon">
+                <img src={pokemonPhoto} alt="pokemon" />
+                <h4>{`No. ${pokemonId}`}</h4>
+                <h4>{`name : ${pokemonName}`}</h4>
+            </div>
+
+        </>
+    );
+}
+
+*/
