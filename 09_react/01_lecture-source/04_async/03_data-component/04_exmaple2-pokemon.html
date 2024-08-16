@@ -13,7 +13,7 @@
     <style>
         .pokemon {
             border: 1px dotted black;
-            width: 250px;
+            width: 300px;
             display: inline-block;
             /*display : 각 요소가 화면에서 어떻게 보여질지 결정하는 역할 - inline : 요소끼리 한줄에 배치한다.*/
             margin: 10px;
@@ -21,6 +21,13 @@
 
         .status {
             float: right;
+            margin: auto;
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -34,8 +41,11 @@
         // 포켓몬 API 호출
         async function callAPI() {
 
+            let offset = 0; // 시작 페이지
+            let limit = 20; // 종료 페이지
+
             const response =
-                await axios.get("https://pokeapi.co/api/v2/pokemon").then(res => res.data.results);
+                await axios.get("https://pokeapi.co/api/v2/pokemon?offset=" + offset + "&limit=" + limit).then(res => res.data.results);
 
             console.log(response);
             return response;
@@ -105,10 +115,13 @@
             return (
 
                 <div className="pokemon">
-                    <img src={pokemonPhoto} alt={pokemon.name} />
-                    <div className="status">
-                        <h4>name : {pokemon.name}</h4>
-                        <h4>id : {pokemonId}</h4>
+
+                    <div className="info">
+                        <img src={pokemonPhoto} alt={pokemon.name} />
+                        <div className="status">
+                            <h2>id : {pokemonId}</h2>
+                            <h4>name : {pokemon.name}</h4>
+                        </div>
                     </div>
                 </div>
             );
@@ -117,10 +130,15 @@
 
         function App() {
 
+            
+
             return (
                 <>
                     <h1>포켓몬 목록</h1>
                     <PokemonList />
+
+                    <button>이전으로</button>
+                    <button>다음으로</button>
                 </>
             );
         }
