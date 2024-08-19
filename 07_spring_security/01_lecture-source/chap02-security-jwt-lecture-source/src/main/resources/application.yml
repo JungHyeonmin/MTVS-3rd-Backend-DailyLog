@@ -1,3 +1,4 @@
+# ddl-auto : create : 서버 한번 끄면 다 사라짐, update : 계속 저장된다. - 엔티티 변경 시 create 로 한번 초기화 후 사용
 server:
   port: 8080
 
@@ -5,7 +6,7 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true

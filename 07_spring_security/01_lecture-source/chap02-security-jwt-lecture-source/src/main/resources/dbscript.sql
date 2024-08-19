@@ -7,3 +7,5 @@ grant all privileges on ohgiraffers.* to ohgiraffers@'%';
 use ohgiraffers;
 
 show tables ;
+
+select * from tbl_user
