@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/layout/default}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div sec:authorize="hasAnyAuthority('ADMIN')">
+    <!-- 'ADMIN' 권한을 가진 사용자만 이 영역을 볼 수 있음 -->
+    <p>Welcome, ADMIN!</p>
+</div>
+</body>
+</html>
