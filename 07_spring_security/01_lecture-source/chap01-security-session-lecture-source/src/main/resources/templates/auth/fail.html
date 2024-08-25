@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script th:inline="javascript">
+        // 오류 메세지를 출력함
+        alert([[${message}]]);
+        // 페이지를 로그인 페이지로 이동시킴
+        window.location.replace("/auth/login");
+    </script>
+</body>
+</html>

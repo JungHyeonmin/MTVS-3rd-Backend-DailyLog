@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/layout/default}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+        <!-- 'ADMIN' 권한을 가진 사용자만 이 영역을 볼 수 있음 -->
+        <p>Welcom, admin</p>
+    </div>
+    <div sec:authorize="hasAnyAuthority('USER')">
+        <!-- 'USER' 권한을 가진 사용자만 이 영역을 볼 수 있음 -->
+        <p>Welcom, USER</p>
+    </div>
+    <div>
+        <h1>로그인 기능</h1>
+        <a href="auth/login">로그인 하기</a>
+        <a href="user/signup">회원가입</a>
+        <form th:action="@{/auth/logout}" th:method="post">
+            <button>로그아웃</button>
+        </form>
+    </div>
+<hr>
+    <a href="admin/page">관리자 페이지</a>
+    <a href="user/page">사용자 페이지</a>
+</body>
+</html>
