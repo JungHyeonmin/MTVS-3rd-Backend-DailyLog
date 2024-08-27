@@ -22,8 +22,8 @@
     <div id="root"></div>
     <script type="text/babel">
         // attribute와 property의 차이점
-        // attribute : html
-        // property  : react
+        // attribute : html의 속성
+        // property  : react의 속성
 
         // JSX를 이용해 엘리먼트를 정의할 시 attribute도 정의할 수 있다.
         // 주의할 사항은 class라는 속성은 className이라는 속성으로 사용해야 한다.
@@ -35,12 +35,12 @@
         // 2. JS 표현식({})이용하여 정의하는 방식
 
         // 문자열로 속성값 정의할 때 이벤트 관련 어트리뷰트는 적용되지 않는다.
-        // const element = <h1 id="title" className="highlight">Hello World!!!</h1>
+        const element = <h1 id="title" className="highlight">Hello World!!!</h1>
         
-        const id = "title";
-        const className="highlight";
+        // const id = "title";
+        // const className="highlight";
         
-        const element=<h1 id={id} className={className} onClick={text}>Hello World!!!</h1>
+        // const element=<h1 id={id} className={className} onClick={text}>Hello World!!!</h1>
 
         function text() {
             console.log('클릭했네?');

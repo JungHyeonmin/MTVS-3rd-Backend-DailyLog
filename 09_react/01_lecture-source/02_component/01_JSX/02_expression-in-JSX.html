@@ -16,17 +16,23 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+
+        // formatName() 함수 선언
         function formatName(user) {
+            // user의 lastName, firstName 호출
             return `${user.lastName} ${user.firstName}`;
         }
 
+        // user 객체에 변수 저장
         const user = {
-            firstNme: 'Fildong',
-            lastname: 'Hong'
+            firstName: 'Gildong',
+            lastName: 'Hong'
         };
 
-        const element = <h1>Hello, {formatName(user)}</h1>; 
+        // element 변수에 호출한 함수의 결과값을 저장
+        const element = <h1>Hello, {formatName(user)}</h1>;
 
+        // element를 렌더링(화면에 보여준다)
         ReactDOM.createRoot(document.getElementById('root')).render(element);
     </script>
 </body>
