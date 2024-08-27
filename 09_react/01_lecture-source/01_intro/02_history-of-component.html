@@ -18,6 +18,11 @@
         // 엘리먼트 : 요소 노드, 어트리부트, 텍스트 노드,  노드로 만들어 지는 가상 DOM
         // 컴포넌트 : 엘리먼트를 반환하는 개념을 가진 화면의 구성 단위
 
+
+        // 함수 컴포넌트 : function으로 컴포넌트를 정의하고, return문에 jsx 코드를 반환한다. - UI를 표현하는 데 필요한 간단한 구조에서 사용하기 좋다, 후크(useState, useEffect)으로 상태관리같은 복잡한 기능을 구현할 수 있다.
+        // 클래스 컴포넌트 : class기반 컴포넌트로, class로 정의하고, render()함수에서 jsx코드를 반환한다.
+
+
         // 클래스형 컴포넌트
         // ES6(2015)에 클래스 문법이 도입되면서, 리엑트에도 리엑트 컴포넌트를 만드는
         // 새로운 방법이 도입되었다.
@@ -31,17 +36,29 @@
         //     }
         // }
 
-        // 함수형 컴포넌트 위의 클래스형 컴포넌트와 같다.
+
+        // 함수형 컴포넌트 위의 클래스형 컴포넌트와 같다. - 함수형 컴포넌트 정의
+        // 인자를 전달할 때 Type(태그, 컴포넌트), Props(인자로 전달하는 요소의 속성-className, id, style, onClick), Children(요소의 자식-텍스트,React.createElement 호출 결과 등) 순서로 전달한다.
         function HelloWorld() {
             return React.createElement(
-                'h1',
-                { className: 'greeting', id: 'test' },
-                'hello world!!'
+                'h1', // type
+                // className: css 속성 이름
+                // id: HTML요소의 고유 식별자
+                { className: 'greeting', id: 'test' }, // props
+                'hello world!!' // children
             );
         }
 
-        ReachDOM.createRoot(document.getElementById('root'))
-            .render(React.createElemnet(HelloWorld))
+        //  ReactDOM.createRoot()를 사용하여 컴포넌트를 페이지에 렌더링
+        ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(HelloWorld));
+
+        // ReactDOM : React 패키지의 DOM 바인딩을 다루는 객체
+        // createRoot : 컨테이너 DOM 노드를 인자로 받아, 그 노드를 루트로 사용하는 React 컴포넌트 트리의 렌더링을 관리하는 루트 객체를 생성
+        // document.getElementById('root') : 순수 JavaScript에서 DOM을 조작하기 위해 사용되는 메소드
+        // document.getElementById : 인자로 주어진 ID 값을 가진 DOM 요소를 찾아 반환한다. 'root'라는 ID를 가진 DOM 요소를 찾아, 이를 createRoot의 인자로 제공
+        // render : 특정 React 요소를 루트 DOM 노드에 렌더링합니다. 
+        // React.createElement : 이 함수는 컴포넌트 타입(여기서는 HelloWorld 컴포넌트), 속성(props), 그리고 자식(children)을 인자로 받아, 정의된 속성과 자식을 가진 React 요소를 반환한다.
+        
     </script>
 </body>
 
