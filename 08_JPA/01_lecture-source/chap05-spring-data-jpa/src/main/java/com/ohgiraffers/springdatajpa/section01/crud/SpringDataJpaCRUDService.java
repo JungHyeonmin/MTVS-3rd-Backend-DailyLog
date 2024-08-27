@@ -16,6 +16,7 @@ public class SpringDataJpaCRUDService {
         this.crudRepository = crudRepository;
     }
 
+    // 전체 검색
     public List<FoundMenuResponseDTO> findAllMenus() {
         // findAll 로 리턴을 받는것은
         // return crudRepository.findAll()
@@ -30,6 +31,7 @@ public class SpringDataJpaCRUDService {
                 .toList();
     }
 
+    // menuCode 로 찾기
     public FoundMenuResponseDTO findMenuByMenuCode(int menuCode) {
 
         // findById 로 값을 꺼낼때 값이 없다면 null 을 발생시킨다.
@@ -51,6 +53,7 @@ public class SpringDataJpaCRUDService {
         crudRepository.save(newMenu); // newMenu 등록
     }
 
+    // 수정
     @Transactional // 커밋과 롤백, flush 기능
     public void modifyMenuName(int menuCode, String menuName) {
 
@@ -58,6 +61,7 @@ public class SpringDataJpaCRUDService {
         foundMenu.setMenuName(menuName);
     }
 
+    // 삭제
     public void removeMenu(int menuCode) {
 
         // delete(Menu entity)
