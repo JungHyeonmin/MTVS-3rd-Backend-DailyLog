@@ -23,26 +23,28 @@
         //         리액트는 매우 유연하게 사용하지만 한 가지 엄격한 규칙이 있다.
         //         "모든 React 컴포넌트는 자신의 props를 다룰 때 반드시 순수 함수처럼 동작해야 한다."
 
-        //         순수 함수란?
+        //         순수 함수란? - 전역변수같이 함수 외부의 영향을 주지 않고 매개변수까지만 사용하여 함수 내부의 값만으로 동작하는 함수
         //         동일한 입력값에 대해 동일한 결과를 반환하는 것을 순수 함수라고 하며,
         //         컴포넌트는 반드시 이러한 순수 함수처럼 작성되어야 한다. (전역 프로퍼티 사용하지 않음)
 
         const name1 = '홍길동';
         const name2 = '유관순';
 
-        function Title(props) {
-            return <h1>안녕하세요 {props.name}님 반갑습니다.</h1>
+        function Title(props) { // 순수 함수
+            return <h1>안녕하세요 {props.name}님 ({props.age}살) 반갑습니다.</h1>
         }
 
-        Title.defaultProps = { // default 값 설정
-            name:'기본이름'
+
+        Title.defaultProps = { // Title함수 default 값 설정 - 아무것도 입력하지 않았을 때 나오는 기본 값
+            name: '기본이름',
+            age: '30'
         }
 
         // 전달 방법
         ReactDOM.createRoot(document.getElementById('root')).render([
-            <Title name={name1} age="20"/>,
-            <Title name={name2}/>,
-            <Title name="이순신"/>, // 문자열
+            <Title name={name1} age='20' />,
+            <Title name={name2} />,
+            <Title name="이순신" />, // 문자열
             <Title /> // default
         ]);
 

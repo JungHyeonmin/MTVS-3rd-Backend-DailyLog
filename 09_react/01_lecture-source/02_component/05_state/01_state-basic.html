@@ -18,14 +18,17 @@
     <script type="text/babel">
         // state는 리액트에서 반.드.시 이해해야 하는 녀석이다..!
 
-        // state란?
+        // state란? - 컴포넌트의 현재 조건을 나타내는 값
         // 컴포넌트 내부에서 바꿀 수 있는 값(바뀔 수 있는 값)을 의미한다.
         // props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하고 주는 읽기 전용 값이지만,
         // state는 컴포넌트 내부에서 설정되는 변경할 수 있는 값이다. (변화하는 상태의 값을 관리)
 
-        class Counter extends React.Component { //props로 전달된 값을 constructor에 전달
-            constructor(props) { // 제일 먼저 호출되는 함수가 constructor인데
-                super(props); // 부모에 props에 전달하고 초기화한다.
+        // counter클래스 컴포넌트
+        class Counter extends React.Component { // React.Component를 상속받는 이유 : React에서 제공하는 핵심 기능을 제공하기 때문이다.
+
+            //props로 전달된 값을 constructor에 전달 
+            constructor(props) { // 제일 먼저 호출되는 함수가 constructor인데 초기값을 설정한다.
+                super(props); // 부모에 props에 전달하고 초기화한다. (상속 필수 규칙! 자바도 상속받으면 부모 클래스에 초기화 시켜야 함)
 
                 // 생성자 안에서 state를 사용하는 방법
                 // 1. state는 this.을 명시해야 한다.
@@ -33,20 +36,26 @@
                 // 3. state에 저장되는 값은 반드시 Object 리터럴 형태로 작성해야 한다.
 
                 this.state = { // 속성에 필드를 추가
-                    number: 3 // 변경될 관리할 값이다. 초기값을 설정한다.
+                    number: 3, // 변경될 관리할 값이다. 초기값을 설정한다.
+                    age: 26
                 };
             }
 
             render() {
                 const number = this.state.number;
+                const age = this.state.age;
 
                 console.log('render 함수 호출 되나??');
 
                 return (
                     <>
-                        <h1>{this.state.number}</h1> {/*초기화 한 값을 반환*/}
+                        <h1>number = {this.state.number}</h1> {/*초기화 한 값을 반환*/}
                         <button onClick={() => this.setState({ number: number - 1 })}>-1</button>
                         <button onClick={() => this.setState({ number: number + 1 })}>+1</button>
+
+                        <h1>age = {this.state.age}</h1> {/*초기화 한 값을 반환*/}
+                        <button onClick={() => this.setState({ age: age - 1 })}>-1</button>
+                        <button onClick={() => this.setState({ age: age + 1 })}>+1</button>
                     </>
                 );
             }

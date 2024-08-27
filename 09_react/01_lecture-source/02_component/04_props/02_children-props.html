@@ -25,13 +25,14 @@
             return (
                 <>
                     <h1>자식 노드가 가지고 있는 값은?</h1>
-                    <h3>children: <font style={{ color: 'orangered' }}>{props.children}</font></h3>
+                    <h3>children: <font style={{ color: 'orangered' }}>{props.children}</font></h3>{/**/}
                 </>
             );
+            //props.children : 컴포넌트 태그 사이에 배치된 모든 내용을 자동으로 포착하여 자식 노드로 인식하고 관리한다.
         }
 
-        ReactDOM.createRoot(document.getElementById('root')).render([
-            <ChildNodePrinter>텍스트 노드</ChildNodePrinter>,
+        ReactDOM.createRoot(document.getElementById('root')).render([ // 렌더링 할 함수형 컴포넌트 호출
+            <ChildNodePrinter>텍스트 노드</ChildNodePrinter>, 
             <ChildNodePrinter><div>텍스트 노드</div></ChildNodePrinter>,
             <ChildNodePrinter><div>1</div><div>2</div><div>3</div><div>4</div></ChildNodePrinter>
         ]);
