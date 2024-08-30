@@ -8,7 +8,7 @@ function Menu() {
 
     const [menuList, setMenuList] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const onClickHandler = () => {
         console.log(searchValue);
@@ -34,6 +34,7 @@ function Menu() {
                 />
                 <button onClick={onClickHandler}>검색</button>
             </div>
+            
             <div className={boxStyle.MenuBox}>
                {menuList.map(menu => <MenuItem key={menu.menuCode} menu={menu}/>)} 
             </div>
