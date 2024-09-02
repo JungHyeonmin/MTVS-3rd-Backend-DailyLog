@@ -1,4 +1,10 @@
+/* .MenuBox 클래스를 가진 
+요소 내의 모든 div 요소에 대해 다음과 같은 스타일을 적용합니다*/
 .MenuBox div {
+    /*display: 요소를 어떻게 보여줄지 레이아웃을 결정하는 속성
+      inline: 한 줄에 요소를 나란히 배치할 수 있게 함
+      block: 크기와 여백을 자유롭게 설정할 수 있게 함*/
     display: inline-block;
+    /*margin: 외부 여백을 설정하여 다른 요소와의 간격을 설정*/
     margin: 5px;
 }

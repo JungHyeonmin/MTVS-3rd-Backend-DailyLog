@@ -7,7 +7,7 @@
        "isOrderable":true,
        "detail": {
            "description": "갓 담근 열무김치를 착즙한 순도 100% 열무김치와 대관령 목장에서 방금 짜낸 싱싱한 우유의 조합",
-           "image": "/images/1.PNG"
+           "image": "./images/1.PNG"
        }
     },
     {

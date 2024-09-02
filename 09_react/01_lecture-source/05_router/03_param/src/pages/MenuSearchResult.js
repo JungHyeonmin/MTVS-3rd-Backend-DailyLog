@@ -20,7 +20,7 @@ function MenuSearchResult() {
     return (
         <>
             <h1>검색 결과</h1>
-            <div className={boxStyle.MenuBox}>
+            <div className={boxStyle.MenuBox} Item>
                 {menuList.map(menu => <MenuItem key={menu.menuCode} menu={menu} />)}
             </div>
         </>

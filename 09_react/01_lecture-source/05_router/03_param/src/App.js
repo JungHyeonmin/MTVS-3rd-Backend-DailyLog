@@ -1,4 +1,7 @@
+// BrowserRouter : react-react-dom에서 제공하는 컴포넌트로, url의 변화를 감지하고 적절한 컴포넌트를 렌더링 하는 역할
+// Router: 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Layout from './layouts/Layout';
 import Main from './pages/Main';
 import About from './pages/About';
@@ -26,3 +29,5 @@ function App() {
 }
 
 export default App;
+
+ // 외부 API 파일에서 정의된 함수, 메뉴의 상세 정보를 불러오는 API 호출 함수
