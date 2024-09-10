@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
-import MenuItem from '../components/MenuItem';
 import {getMenuList} from '../apis/MenuAPI';
-import boxStyle from './Menu.module.css';
 import {useNavigate} from 'react-router-dom';
+import MenuItem from '../components/MenuItem';
+import boxStyle from './Menu.module.css';
 
 function Menu() {
 
@@ -36,6 +36,7 @@ function Menu() {
             </div>
             
             <div className={boxStyle.MenuBox}>
+                {/* menuList를 순회하면서 key={menu.menuCode} : 고유 식별키, menu={menu} : props 전달*/}
                {menuList.map(menu => <MenuItem key={menu.menuCode} menu={menu}/>)} 
             </div>
         </>
